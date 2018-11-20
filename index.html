@@ -291,6 +291,238 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/20/cpp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/20/cpp/" itemprop="url">
+                  cpp study
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-20 20:35:35" itemprop="dateCreated datePublished" datetime="2018-11-20T20:35:35+08:00">2018-11-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-21 03:04:42" itemprop="dateModified" datetime="2018-11-21T03:04:42+08:00">2018-11-21</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/cpp/" itemprop="url" rel="index"><span itemprop="name">cpp</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="指针和常量"><a href="#指针和常量" class="headerlink" title="指针和常量"></a>指针和常量</h1><pre><code>char s1[] = &quot;hello world&quot;;
+char s2[] = &quot;c plus plus&quot;;
+
+// 指向常量
+const char *p = s1;
+p[0] = &apos;a&apos;;              // 错误
+p = s2;                  // ok
+
+// 常量指针
+char *const p = s1;
+p[0] = &apos;a&apos;;              // ok
+p = s2;                  // 错误
+
+// 到const的const指针
+const char *const p = s1;
+p[0] = &apos;a&apos;;              // 错误
+p = s2;                  // 错误
+</code></pre><h1 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h1><pre><code>// 定义1
+struct Student {
+    int a;
+};
+// 声明(2种)
+struct Student stu1;
+Student stu2;
+</code></pre><hr>
+<pre><code>// 定义2(单个别名)
+typedef struct Student {
+    int a;
+} Stu;
+// 即 Stu = struct Student
+
+// 声明(3种)
+struct Student stu1;
+Student stu2;
+Stu stu3;
+</code></pre><hr>
+<pre><code>// 定义3(多个别名)
+typedef struct Student {
+    int a;
+} Stu1, Stu2, Stu3;
+// 声明
+Stu1 stu1;
+Stu2 stu2;
+Stu3 stu3;
+</code></pre><hr>
+<pre><code>// 直接用结构体定义一个变量
+struct Student {
+    int a;
+} stu;
+</code></pre><hr>
+<pre><code>// 直接用结构体定义多个变量
+struct Student {
+    int a;
+} stu1, stu2, stu3, stu[10];
+</code></pre><hr>
+<pre><code>// 结构体 与 指针
+typedef struct Student {
+    int a;
+} Stu, pStu;
+Stu stu;
+pStu p;
+p = &amp;stu;
+</code></pre><hr>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/09/macbook-anaconda-remove/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1821,212 +2053,6 @@ GPU:pip install --ignore-installed --upgrade tensorflow-gpu
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/anacoda/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xuxiaokang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/31/anacoda/" itemprop="url">
-                  Anacoda常用命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-31 13:49:01" itemprop="dateCreated datePublished" datetime="2018-05-31T13:49:01+08:00">2018-05-31</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-08-24 22:45:55" itemprop="dateModified" datetime="2018-08-24T22:45:55+08:00">2018-08-24</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Anacoda/" itemprop="url" rel="index"><span itemprop="name">Anacoda</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="anacoda配置"><a href="#anacoda配置" class="headerlink" title="anacoda配置"></a>anacoda配置</h1><h2 id="anaconda换源："><a href="#anaconda换源：" class="headerlink" title="anaconda换源："></a>anaconda换源：</h2><pre><code>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-</code></pre><h2 id="恢复默认源"><a href="#恢复默认源" class="headerlink" title="恢复默认源"></a>恢复默认源</h2><pre><code>conda config --remove-key channels
-</code></pre><h2 id="有资源显示源地址："><a href="#有资源显示源地址：" class="headerlink" title="有资源显示源地址："></a>有资源显示源地址：</h2><pre><code>conda config --set show_channel_urls yes
-</code></pre><h2 id="显示配置信息"><a href="#显示配置信息" class="headerlink" title="显示配置信息"></a>显示配置信息</h2><pre><code>conda config --show
-</code></pre><h1 id="anacoda使用"><a href="#anacoda使用" class="headerlink" title="anacoda使用"></a>anacoda使用</h1><h2 id="更新-conda-自身"><a href="#更新-conda-自身" class="headerlink" title="更新 conda 自身"></a>更新 conda 自身</h2><pre><code>conda update conda
-</code></pre><h2 id="更新-anaconda-自身"><a href="#更新-anaconda-自身" class="headerlink" title="更新 anaconda 自身"></a>更新 anaconda 自身</h2><pre><code>conda update anaconda
-</code></pre><h2 id="更新-python"><a href="#更新-python" class="headerlink" title="更新 python"></a>更新 python</h2><pre><code>conda update python
-</code></pre><h2 id="创建环境"><a href="#创建环境" class="headerlink" title="创建环境"></a>创建环境</h2><pre><code>conda create --name [name] [dependent package list]
-
-例如：
-conda create --name xxxxxxxx biopython
-指定了python版本
-conda create --name xxxxxxxx python=3.5 astroid babel
-</code></pre><h2 id="从其他环境拷贝到新的环境"><a href="#从其他环境拷贝到新的环境" class="headerlink" title="从其他环境拷贝到新的环境"></a>从其他环境拷贝到新的环境</h2><pre><code>conda create --name target --clone source
-</code></pre><h2 id="激活环境"><a href="#激活环境" class="headerlink" title="激活环境"></a>激活环境</h2><pre><code>Linux and macOS: source activate snowflakes
-Windows: activate snowflakes
-</code></pre><h2 id="列出当前环境"><a href="#列出当前环境" class="headerlink" title="列出当前环境"></a>列出当前环境</h2><pre><code>conda info --envs
-</code></pre><h2 id="失效环境，或切换到root环境"><a href="#失效环境，或切换到root环境" class="headerlink" title="失效环境，或切换到root环境"></a>失效环境，或切换到root环境</h2><pre><code>Linux, macOS: source deactivate
-Windows: deactivate
-</code></pre><h2 id="删除指定环境"><a href="#删除指定环境" class="headerlink" title="删除指定环境"></a>删除指定环境</h2><pre><code>conda remove --name xxxxxxxx --all
-</code></pre><h1 id="包管理命令"><a href="#包管理命令" class="headerlink" title="包管理命令"></a>包管理命令</h1><h2 id="查询可用包版本信息"><a href="#查询可用包版本信息" class="headerlink" title="查询可用包版本信息"></a>查询可用包版本信息</h2><pre><code>conda search --full-name python
-conda search beautifulsoup4
-
-
-查询在线包链接：
-https://anaconda.org/
-</code></pre><h2 id="查询当前环境中的包列表"><a href="#查询当前环境中的包列表" class="headerlink" title="查询当前环境中的包列表"></a>查询当前环境中的包列表</h2><pre><code>conda list
-</code></pre><h2 id="在环境中安装包"><a href="#在环境中安装包" class="headerlink" title="在环境中安装包"></a>在环境中安装包</h2><pre><code>conda install numpy=1.13.3
-conda install --name [环境名称] beautifulsoup4
-
-
-使用pip工具安装:
-pip只是一个包管理工具，不同于conda，是无法识别环境的，而且无法更新python，pip认为python不是一个包。但pip可以安装一些conda无法安装的包，pip已经随着anaconda和minconda安装好了。
-
-安装命令
-pip install see
-</code></pre><h2 id="删除包"><a href="#删除包" class="headerlink" title="删除包"></a>删除包</h2><pre><code>conda remove --name [环境名称] iopro
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2074,7 +2100,7 @@ pip install see
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2101,7 +2127,9 @@ pip install see
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2144,7 +2172,9 @@ pip install see
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
