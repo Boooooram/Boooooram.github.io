@@ -337,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2018-11-29 01:34:35 / 修改时间：02:32:09" itemprop="dateCreated datePublished" datetime="2018-11-29T01:34:35+08:00">2018-11-29</time>
+              <time title="创建时间：2018-11-29 01:34:35 / 修改时间：10:56:21" itemprop="dateCreated datePublished" datetime="2018-11-29T01:34:35+08:00">2018-11-29</time>
             
 
             
@@ -403,17 +403,17 @@
 }
 </code></pre><h1 id="Ackerman-函数"><a href="#Ackerman-函数" class="headerlink" title="Ackerman 函数"></a>Ackerman 函数</h1><pre><code>none
 </code></pre><h1 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h1><pre><code>template&lt;typename T&gt;
-void permutation(T list[], int k, int m) {
-    if(k == m) {
-        for(int i = 0; i &lt;= m; i++)
+void permutation(T list[], int p, int q) {
+    if(p == q) {
+        for(int i = 0; i &lt;= q; i++)
             cout &lt;&lt; list[i];
         cout &lt;&lt; endl;
     }
     else {
-        for(int i = k; i &lt;= m; i++) {
-            swap(list[k], list[i]);
-            permutation(list, k + 1, m);
-            swap(list[k], list[i]);
+        for(int i = p; i &lt;= q; i++) {
+            swap(list[i], list[p]);
+            perm(list, p + 1, q);
+            swap(list[i], list[p]);
         }
     }
 }
