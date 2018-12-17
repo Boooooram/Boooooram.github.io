@@ -291,6 +291,247 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/paper/Bag-of-Tricks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/17/paper/Bag-of-Tricks/" itemprop="url">
+                  Bag of Tricks for Image Classification with Convolutional Neural Networks
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-17 08:13:24 / 修改时间：19:06:28" itemprop="dateCreated datePublished" datetime="2018-12-17T08:13:24+08:00">2018-12-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/deep-learning/" itemprop="url" rel="index"><span itemprop="name">deep learning</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/deep-learning/fine-tune/" itemprop="url" rel="index"><span itemprop="name">fine-tune</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>ImageNet的 top-1 validation accuracy 从62.5% (AlexNet) 提升到 82.7% (NASNet-A)。  </p>
+<p>准确率的提升不仅仅来自于网络架构的调整，训练过程中的<strong>损失函数、数据预处理和优化方法</strong>也起着重要作用。但这些微调在论文中只是被当作实现细节简要提及或者只能从源码中才能找到。  </p>
+<p>在这篇文章做，我们列举了一系列训练过程和模型架构的改进方法，这些方法都能够提升模型准确率但几乎不增加计算复杂度的。大部分的改进方法都是像<strong>调整卷积操作的步长、调节学习率</strong>这样的[tricks]。  </p>
+<p>我们的实验表明，这些[tricks]都能显著提升准确率，并且把它们结合起来的话，还能进一步提升准确率。在表[1]中我们比较了运用了所有[tricks]的ResNet和其他相关网络模型。这些[tricks]能够把Resnet-50在ImageNet上的 top-1 validation accuracy 从75.3% 提升到 79.29%。它也优于其他更新、经过改善了的网络架构像Se-ResNeXt-50。我们进一步表明：在物体检测和语义分割这样的应用领域中，这些[tricks]可以带来更好的迁移学习性能。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Model</th>
+<th style="text-align:center">FLOPs</th>
+<th style="text-align:center">top-1</th>
+<th style="text-align:center">top-5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ResNet-50</td>
+<td style="text-align:center">3.9G</td>
+<td style="text-align:center">75.3</td>
+<td style="text-align:center">92.2</td>
+</tr>
+<tr>
+<td style="text-align:left">ResNeXt-50</td>
+<td style="text-align:center">4.2G</td>
+<td style="text-align:center">77.8</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SE-ResNet-50</td>
+<td style="text-align:center">3.9G</td>
+<td style="text-align:center">76.71</td>
+<td style="text-align:center">93.38</td>
+</tr>
+<tr>
+<td style="text-align:left">SE-ResNeXt-50</td>
+<td style="text-align:center">4.3G</td>
+<td style="text-align:center">78.90</td>
+<td style="text-align:center">94.51</td>
+</tr>
+<tr>
+<td style="text-align:left">DenseNet-20</td>
+<td style="text-align:center">4.3G</td>
+<td style="text-align:center">77.42</td>
+<td style="text-align:center">93.66</td>
+</tr>
+<tr>
+<td style="text-align:left">ResNet-50 + tricks</td>
+<td style="text-align:center">4.3G</td>
+<td style="text-align:center">79.29</td>
+<td style="text-align:center">94.63</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Training-Procedures"><a href="#Training-Procedures" class="headerlink" title="Training Procedures"></a>Training Procedures</h1><pre><code>Algorithm 1  
+Train a neural network with mini-batch stochastic gradient descent
+
+initialize(net)
+for epoch = 1, ..., K do
+    for batch = 1, ..., #images/b do
+        images ← uniformly random sample b images
+        X, y ← preprocess(images)
+        z ← forward(net, X)
+        l ← loss(z, y)
+        grad ← backward(l)
+        update(net, grad)
+    end for
+end for
+</code></pre><p>Algorithm [1]给出了使用mini-batch SGD训练神经网络的模版。每次迭代过程中，我们随机采样b张图片计算梯度然后更新参数。经过K次迭代后停止。算法[1]所有的函数和超参数可以通过许多不同的方法来实现。这一章，我们先具体说明一个实现算法[1]的基准线。</p>
+<h2 id="Baseline-Training-Procedure"><a href="#Baseline-Training-Procedure" class="headerlink" title="Baseline Training Procedure"></a>Baseline Training Procedure</h2><p>我们把广泛使用的ResNet的实现作为我们的基准线。  </p>
+<pre><code>训练过程中的步骤如下: 
+1.随机采样一张图片，并解码为 32 位的原始像素浮点值，像素值的取值范围为[0, 255]
+2.以纵横比为 [3/4, 4/3] (也就是9:16) 的矩形框采样大小在[8%, 100%]的图片，并缩放为224*224的正方形图片
+3.以0.5的概率水平翻转
+4.在[0.6, 1.4]均匀分布中选取一个系数，用来缩放图片的色彩，饱和度，亮度。
+5.添加PCA噪声，系数采样于标准正态分布。
+6.通过减去（123.68, 116.779, 103.939），并除以（58.393, 57.12, 57.375）来标准化RGB三通道。
+</code></pre><p>验证过程中，我们保持纵横比不变的前提下，把短的变成定为256像素。然后在中心裁剪出224*224的区域并标准化RGB三通道。We do not perform any random augmentations during validation。  </p>
+<p>卷积层和全连接层都是通过Xavier初始化权重的。我们把权重设置为从[-a, a]均匀地抽取出来的随机值。$a = \sqrt{6 / (d_{in}+d_{out})}$，这里的$d_{in}$和$d_{out}$分别是输入输出的通道数。所有的偏置初始化为0。对于batch normalization操作，$\gamma$设置为0，$\beta$设置为0。  </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/29/cpp/cpp_ recursion_and_divide_and_conquer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2288,7 +2529,7 @@ public class HelloWorld extends HttpServlet {
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2309,7 +2550,13 @@ public class HelloWorld extends HttpServlet {
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2338,7 +2585,9 @@ public class HelloWorld extends HttpServlet {
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
