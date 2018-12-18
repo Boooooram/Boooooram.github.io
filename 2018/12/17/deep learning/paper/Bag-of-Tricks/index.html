@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="顺序表 - 类模版// //  SeqList.cpp //  cpp // //  Created by xuxiaokang on 2018/11/28. //  Copyright © 2018 xuxiaokang. All rights reserved. //  #include &amp;lt;iostream&amp;gt; using namespace std;  #define DEFAUL">
-<meta name="keywords" content="cpp,structure">
+  <meta name="description" content="IntroductionImageNet的 top-1 validation accuracy 从62.5% (AlexNet) 提升到 82.7% (NASNet-A)。   准确率的提升不仅仅来自于网络架构的调整，训练过程中的损失函数、数据预处理和优化方法也起着重要作用。但这些微调在论文中只是被当作实现细节简要提及或者只能从源码中才能找到。   在这篇文章做，我们列举了一系列训练过程和模型架构">
+<meta name="keywords" content="fine-tune">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cpp - 顺序表 - SeqList">
-<meta property="og:url" content="http://yoursite.com/2018/11/28/cpp/cpp_SeqList/index.html">
+<meta property="og:title" content="Bag of Tricks for Image Classification with Convolutional Neural Networks">
+<meta property="og:url" content="http://yoursite.com/2018/12/17/deep learning/paper/Bag-of-Tricks/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="顺序表 - 类模版// //  SeqList.cpp //  cpp // //  Created by xuxiaokang on 2018/11/28. //  Copyright © 2018 xuxiaokang. All rights reserved. //  #include &amp;lt;iostream&amp;gt; using namespace std;  #define DEFAUL">
+<meta property="og:description" content="IntroductionImageNet的 top-1 validation accuracy 从62.5% (AlexNet) 提升到 82.7% (NASNet-A)。   准确率的提升不仅仅来自于网络架构的调整，训练过程中的损失函数、数据预处理和优化方法也起着重要作用。但这些微调在论文中只是被当作实现细节简要提及或者只能从源码中才能找到。   在这篇文章做，我们列举了一系列训练过程和模型架构">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-28T16:07:14.000Z">
+<meta property="og:updated_time" content="2018-12-18T14:25:47.481Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cpp - 顺序表 - SeqList">
-<meta name="twitter:description" content="顺序表 - 类模版// //  SeqList.cpp //  cpp // //  Created by xuxiaokang on 2018/11/28. //  Copyright © 2018 xuxiaokang. All rights reserved. //  #include &amp;lt;iostream&amp;gt; using namespace std;  #define DEFAUL">
+<meta name="twitter:title" content="Bag of Tricks for Image Classification with Convolutional Neural Networks">
+<meta name="twitter:description" content="IntroductionImageNet的 top-1 validation accuracy 从62.5% (AlexNet) 提升到 82.7% (NASNet-A)。   准确率的提升不仅仅来自于网络架构的调整，训练过程中的损失函数、数据预处理和优化方法也起着重要作用。但这些微调在论文中只是被当作实现细节简要提及或者只能从源码中才能找到。   在这篇文章做，我们列举了一系列训练过程和模型架构">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/28/cpp/cpp_SeqList/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/17/deep learning/paper/Bag-of-Tricks/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>cpp - 顺序表 - SeqList | </title>
+  <title>Bag of Tricks for Image Classification with Convolutional Neural Networks | </title>
   
 
 
@@ -295,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/28/cpp/cpp_SeqList/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/deep learning/paper/Bag-of-Tricks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xuxiaokang">
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cpp - 顺序表 - SeqList
+          <h1 class="post-title" itemprop="name headline">Bag of Tricks for Image Classification with Convolutional Neural Networks
               
             
           </h1>
@@ -337,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2018-11-28 21:24:37" itemprop="dateCreated datePublished" datetime="2018-11-28T21:24:37+08:00">2018-11-28</time>
+              <time title="创建时间：2018-12-17 08:13:24" itemprop="dateCreated datePublished" datetime="2018-12-17T08:13:24+08:00">2018-12-17</time>
             
 
             
@@ -354,7 +354,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-29 00:07:14" itemprop="dateModified" datetime="2018-11-29T00:07:14+08:00">2018-11-29</time>
+                <time title="修改时间：2018-12-18 22:25:47" itemprop="dateModified" datetime="2018-12-18T22:25:47+08:00">2018-12-18</time>
               
             
           </span>
@@ -371,7 +371,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/cpp/" itemprop="url" rel="index"><span itemprop="name">cpp</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/deep-learning/" itemprop="url" rel="index"><span itemprop="name">deep learning</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/deep-learning/fine-tune/" itemprop="url" rel="index"><span itemprop="name">fine-tune</span></a></span>
 
                 
                 
@@ -405,254 +412,84 @@
       
 
       
-        <h1 id="顺序表-类模版"><a href="#顺序表-类模版" class="headerlink" title="顺序表 - 类模版"></a>顺序表 - 类模版</h1><pre><code>//
-//  SeqList.cpp
-//  cpp
-//
-//  Created by xuxiaokang on 2018/11/28.
-//  Copyright © 2018 xuxiaokang. All rights reserved.
-//
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>ImageNet的 top-1 validation accuracy 从62.5% (AlexNet) 提升到 82.7% (NASNet-A)。  </p>
+<p>准确率的提升不仅仅来自于网络架构的调整，训练过程中的<strong>损失函数、数据预处理和优化方法</strong>也起着重要作用。但这些微调在论文中只是被当作实现细节简要提及或者只能从源码中才能找到。  </p>
+<p>在这篇文章做，我们列举了一系列训练过程和模型架构的改进方法，这些方法都能够提升模型准确率但几乎不增加计算复杂度的。大部分的改进方法都是像<strong>调整卷积操作的步长、调节学习率</strong>这样的[tricks]。  </p>
+<p>我们的实验表明，这些[tricks]都能显著提升准确率，并且把它们结合起来的话，还能进一步提升准确率。在表[1]中我们比较了运用了所有[tricks]的ResNet和其他相关网络模型。这些[tricks]能够把Resnet-50在ImageNet上的 top-1 validation accuracy 从75.3% 提升到 79.29%。它也优于其他更新、经过改善了的网络架构像Se-ResNeXt-50。我们进一步表明：在物体检测和语义分割这样的应用领域中，这些[tricks]可以带来更好的迁移学习性能。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Model</th>
+<th style="text-align:center">FLOPs</th>
+<th style="text-align:center">top-1</th>
+<th style="text-align:center">top-5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ResNet-50</td>
+<td style="text-align:center">3.9G</td>
+<td style="text-align:center">75.3</td>
+<td style="text-align:center">92.2</td>
+</tr>
+<tr>
+<td style="text-align:left">ResNeXt-50</td>
+<td style="text-align:center">4.2G</td>
+<td style="text-align:center">77.8</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SE-ResNet-50</td>
+<td style="text-align:center">3.9G</td>
+<td style="text-align:center">76.71</td>
+<td style="text-align:center">93.38</td>
+</tr>
+<tr>
+<td style="text-align:left">SE-ResNeXt-50</td>
+<td style="text-align:center">4.3G</td>
+<td style="text-align:center">78.90</td>
+<td style="text-align:center">94.51</td>
+</tr>
+<tr>
+<td style="text-align:left">DenseNet-20</td>
+<td style="text-align:center">4.3G</td>
+<td style="text-align:center">77.42</td>
+<td style="text-align:center">93.66</td>
+</tr>
+<tr>
+<td style="text-align:left">ResNet-50 + tricks</td>
+<td style="text-align:center">4.3G</td>
+<td style="text-align:center">79.29</td>
+<td style="text-align:center">94.63</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Training-Procedures"><a href="#Training-Procedures" class="headerlink" title="Training Procedures"></a>Training Procedures</h1><pre><code>Algorithm 1  
+Train a neural network with mini-batch stochastic gradient descent
 
-#include &lt;iostream&gt;
-using namespace std;
+initialize(net)
+for epoch = 1, ..., K do
+    for batch = 1, ..., #images/b do
+        images ← uniformly random sample b images
+        X, y ← preprocess(images)
+        z ← forward(net, X)
+        l ← loss(z, y)
+        grad ← backward(l)
+        update(net, grad)
+    end for
+end for
+</code></pre><p>Algorithm [1]给出了使用mini-batch SGD训练神经网络的模版。每次迭代过程中，我们随机采样b张图片计算梯度然后更新参数。经过K次迭代后停止。算法[1]所有的函数和超参数可以通过许多不同的方法来实现。这一章，我们先具体说明一个实现算法[1]的基准线。</p>
+<h2 id="Baseline-Training-Procedure"><a href="#Baseline-Training-Procedure" class="headerlink" title="Baseline Training Procedure"></a>Baseline Training Procedure</h2><p>我们把广泛使用的ResNet的实现作为我们的基准线。  </p>
+<pre><code>训练过程中的步骤如下: 
+1.随机采样一张图片，并解码为 32 位的原始像素浮点值，像素值的取值范围为[0, 255]
+2.以纵横比为 [3/4, 4/3] (也就是9:16) 的矩形框采样大小在[8%, 100%]的图片，并缩放为224*224的正方形图片
+3.以0.5的概率水平翻转
+4.在[0.6, 1.4]均匀分布中选取一个系数，用来缩放图片的色彩，饱和度，亮度。
+5.添加PCA噪声，系数采样于标准正态分布。
+6.通过减去（123.68, 116.779, 103.939），并除以（58.393, 57.12, 57.375）来标准化RGB三通道。
+</code></pre><p>验证过程中，我们保持纵横比不变的前提下，把短的变成定为256像素。然后在中心裁剪出224*224的区域并标准化RGB三通道。We do not perform any random augmentations during validation。  </p>
+<p>卷积层和全连接层都是通过Xavier初始化权重的。我们把权重设置为从[-a, a]均匀地抽取出来的随机值。$a = \sqrt{6 / (d_{in}+d_{out})}$，这里的$d_{in}$和$d_{out}$分别是输入输出的通道数。所有的偏置初始化为0。对于batch normalization操作，$\gamma$设置为0，$\beta$设置为0。  </p>
 
-#define DEFAULT_SIZE 1000
-enum Status {SUCCESS, FAIL, UNDER_FLOW, OVER_FLOW,RANGE_ERROR, DUPLICATE_ERROR, NOT_PRESENT, ENTRY_INSERTED, ENTRY_FOUND, VISITED, UNVISITED};
-
-template &lt;typename T&gt;
-class SeqList
-{
-private:
-    T *elems;                                           // 元素存储空间的首地址
-    int length;                                         // 顺序表的当前长度
-    int maxLength;                                      // 顺序表的最大容量
-
-public:
-    SeqList(int size = DEFAULT_SIZE);                   // 构造一个空表
-    SeqList(T v[], int n, int size = DEFAULT_SIZE);     // 根据数组v构建长度为n的顺序表
-    virtual ~SeqList();                                 // 析构函数
-    int getLength() const;                              // 返回当前顺序表长度
-    int getMaxLength() const;                           // 返回当前顺序表最大容量
-    bool isEmpty() const;                               // 判断顺序表是否为空
-    void clear();                                       // 清空顺序表
-    void traverse() const;                              // 遍历顺序表
-    int LocateElem(const T &amp;e) const;                   // 返回指定元素的下标
-    Status GetElem(int i, T &amp;e) const;                  // 取顺序表中第i个元素的值
-    Status SetElem(int i, const T &amp;e);                  // 修改顺序表中第i个元素的值
-    Status DeleteElem(int i, T &amp;e);                     // 删除顺序表中第i个元素
-    Status InsertElem(int i, const T &amp;e);               // 在顺序表第i个位置插入元素
-    Status InsertElem(const T &amp;e);                      // 在顺序表末尾插入元素
-    SeqList(const SeqList&lt;T&gt; &amp;sa);                      // 复制构造函数
-    SeqList&lt;T&gt;&amp; operator= (const SeqList&lt;T&gt; &amp;sa);       // 赋值语句重载
-};
-
-
-template &lt;typename T&gt;
-SeqList&lt;T&gt;::SeqList(int size) {
-    elems = new T[size];
-    length = 0;
-    maxLength = size;
-}
-
-template &lt;typename T&gt;
-SeqList&lt;T&gt;::SeqList(T v[], int n, int size) {
-    elems = new T[size];
-    length = n;
-    maxLength = size;
-    for(int i = 0; i &lt; n; i++)
-        elems[i] = v[i];
-}
-
-template &lt;typename T&gt;
-SeqList&lt;T&gt;::~SeqList() {
-    delete []elems;
-}
-
-template &lt;typename T&gt;
-int SeqList&lt;T&gt;::getLength() const {
-    return length;
-}
-
-template &lt;typename T&gt;
-int SeqList&lt;T&gt;::getMaxLength() const {
-    return maxLength;
-}
-
-template &lt;typename T&gt;
-bool SeqList&lt;T&gt;::isEmpty() const {
-    return length == 0;
-}
-
-template &lt;typename T&gt;
-void SeqList&lt;T&gt;::clear() {
-    length = 0;
-}
-
-template &lt;typename T&gt;
-void SeqList&lt;T&gt;::traverse() const {
-    cout &lt;&lt; &quot;[&quot;;
-    for(int i = 0; i &lt; length; i++) {
-        if(i == length - 1)
-            cout &lt;&lt; elems[i];
-        else
-            cout &lt;&lt; elems[i] &lt;&lt; &quot;, &quot;;
-    }
-    cout &lt;&lt; &quot;]&quot; &lt;&lt; endl;
-}
-
-template &lt;typename T&gt;
-int SeqList&lt;T&gt;::LocateElem(const T &amp;e) const {
-    int locat = -1;
-    for(int i = 0; i &lt; length; i++) {
-        if(elems[i] == e)
-            locat = i + 1;
-    }
-    return locat;
-}
-
-template &lt;typename T&gt;
-Status SeqList&lt;T&gt;::GetElem(int i, T &amp;e) const {
-    if(i &lt; 1 || i &gt; length)
-        return RANGE_ERROR;
-    else {
-        e = elems[i - 1];
-        return ENTRY_FOUND;
-    }
-}
-
-template &lt;typename T&gt;
-Status SeqList&lt;T&gt;::SetElem(int i, const T &amp;e) {
-    if(i &lt; 1 || i &gt; length)
-        return RANGE_ERROR;
-    else {
-        elems[i - 1] = e;
-        return SUCCESS;
-    }
-}
-
-template&lt;typename T&gt;
-Status SeqList&lt;T&gt;::DeleteElem(int i, T &amp;e) {
-    if(i &lt; 1 || i &gt; length)
-        return RANGE_ERROR;
-    else {
-        e = elems[i -1];
-        for(int j = i; j &lt; length; j++)
-            elems[j - 1] = elems[j];
-
-        length -= 1;
-        return SUCCESS;
-    }
-}
-
-template&lt;typename T&gt;
-Status SeqList&lt;T&gt;::InsertElem(int i, const T &amp;e) {
-    if(length == maxLength)
-        return OVER_FLOW;
-    else if(i &lt; 1 || i &gt; length + 1)
-        return RANGE_ERROR;
-    else {
-        for(int j = length; j &gt;= i; j--)
-            elems[j + 1] = elems[j];
-        elems[i - 1] = e;
-        length += 1;
-        return SUCCESS;
-
-    }
-}
-template&lt;typename T&gt;
-Status SeqList&lt;T&gt;::InsertElem(const T &amp;e) {
-    if(length == maxLength)
-        return OVER_FLOW;
-    else {
-        elems[length] = e;
-        length += 1;
-        return SUCCESS;
-    }
-}
-
-template&lt;typename T&gt;
-SeqList&lt;T&gt;::SeqList(const SeqList&lt;T&gt; &amp;sa) {
-    int salength = sa.getLength();
-    maxLength = sa.getMaxLength();
-    elems = new T[maxLength];
-    length = 0;
-    T e;
-    for(int i = 1; i &lt;= salength; i++) {
-        sa.GetElem(i, e);
-        this-&gt;InsertElem(e);
-    }
-}
-
-template&lt;typename T&gt;
-SeqList&lt;T&gt;&amp; SeqList&lt;T&gt;::operator= (const SeqList&lt;T&gt; &amp;sa) {
-    if(&amp;sa != this) {
-        int salength = sa.getLength();
-        int maxLength = sa.getMaxLength();
-        elems = new T[maxLength];
-        length = 0;
-        T e;
-        for(int i = 1; i &lt;= salength; i++) {
-            sa.GetElem(i, e);
-            this-&gt;InsertElem(e);
-        }
-    }
-    return *this;
-}
-</code></pre><h1 id="顺序表-应用"><a href="#顺序表-应用" class="headerlink" title="顺序表 - 应用"></a>顺序表 - 应用</h1><pre><code>int main() {
-    int a[5] = {1, 2, 3, 4, 5};
-    SeqList&lt;int&gt; sa(a, 5, 10);
-
-    cout &lt;&lt; &quot;顺序表sa的当前长度为：&quot; &lt;&lt; sa.getLength() &lt;&lt; endl;
-    cout &lt;&lt; &quot;顺序表sa的容量为：&quot; &lt;&lt; sa.getMaxLength() &lt;&lt; endl;
-    cout &lt;&lt; &quot;顺序表sa是否为空？：&quot; &lt;&lt; (sa.isEmpty() ? &quot;是&quot; : &quot;否&quot;) &lt;&lt; endl;
-
-    const int d = 5;
-    cout &lt;&lt; &quot;元素5的下标为：&quot; &lt;&lt; sa.LocateElem(d) &lt;&lt; endl;
-
-    SeqList&lt;int&gt; sb(sa);
-    cout &lt;&lt; &quot;通过复制构造得到的顺序表sb的遍历结果为：&quot;;
-    sb.traverse();
-
-    int e;
-    const int f = 8;
-    sb.GetElem(3, e);
-    cout &lt;&lt; &quot;sb的第3个元素为：&quot; &lt;&lt; e &lt;&lt; endl;
-
-    sb.SetElem(3, f);
-    cout &lt;&lt; &quot;sb经过修改元素后的遍历结果为：&quot;;
-    sb.traverse();
-
-    sb.DeleteElem(3, e);
-    cout &lt;&lt; &quot;sb经过删除元素后的遍历结果为：&quot;;
-    sb.traverse();
-    cout &lt;&lt; &quot;顺序表sb的当前长度为：&quot; &lt;&lt; sb.getLength() &lt;&lt; endl;
-    cout &lt;&lt; &quot;e的值为：&quot; &lt;&lt; e &lt;&lt; endl;
-
-    e = 20;
-    sb.InsertElem(3, e);
-    cout &lt;&lt; &quot;sb经过插入元素后的遍历结果为：&quot;;
-    sb.traverse();
-    cout &lt;&lt; &quot;顺序表sb的当前长度为：&quot; &lt;&lt; sb.getLength() &lt;&lt; endl;
-
-    sb.InsertElem(88);
-    cout &lt;&lt; &quot;sb经过插入元素后的遍历结果为：&quot;;
-    sb.traverse();
-    cout &lt;&lt; &quot;顺序表sb的当前长度为：&quot; &lt;&lt; sb.getLength() &lt;&lt; endl;
-
-    cout &lt;&lt; &quot;顺序表sa遍历结果为：&quot;;
-    sa.traverse();
-
-    sa.clear();
-    cout &lt;&lt; &quot;顺序表清空后，遍历结果为：&quot;;
-    sa.traverse();
-
-    SeqList&lt;int&gt; sc;
-    sc = sb;
-    cout &lt;&lt; &quot;顺序表sc遍历结果为：&quot;;
-    sc.traverse();
-    return 0;
-}
-</code></pre>
       
     </div>
 
@@ -672,9 +509,7 @@ SeqList&lt;T&gt;&amp; SeqList&lt;T&gt;::operator= (const SeqList&lt;T&gt; &amp;s
       
         <div class="post-tags">
           
-            <a href="/tags/cpp/" rel="tag"><i class="fa fa-tag"></i> cpp</a>
-          
-            <a href="/tags/structure/" rel="tag"><i class="fa fa-tag"></i> structure</a>
+            <a href="/tags/fine-tune/" rel="tag"><i class="fa fa-tag"></i> fine-tune</a>
           
         </div>
       
@@ -687,8 +522,8 @@ SeqList&lt;T&gt;&amp; SeqList&lt;T&gt;::operator= (const SeqList&lt;T&gt; &amp;s
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/20/cpp/cpp_practise/" rel="next" title="cpp - practise">
-                <i class="fa fa-chevron-left"></i> cpp - practise
+              <a href="/2018/11/29/cpp/cpp_ recursion_and_divide_and_conquer/" rel="next" title="cpp - 递归与分治策略">
+                <i class="fa fa-chevron-left"></i> cpp - 递归与分治策略
               </a>
             
           </div>
@@ -697,8 +532,8 @@ SeqList&lt;T&gt;&amp; SeqList&lt;T&gt;::operator= (const SeqList&lt;T&gt; &amp;s
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/29/cpp/cpp_ recursion_and_divide_and_conquer/" rel="prev" title="cpp - 递归与分治策略">
-                cpp - 递归与分治策略 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/17/deep learning/regularization/regularization/" rel="prev" title="regularization">
+                regularization <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -883,7 +718,7 @@ SeqList&lt;T&gt;&amp; SeqList&lt;T&gt;::operator= (const SeqList&lt;T&gt; &amp;s
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序表-类模版"><span class="nav-number">1.</span> <span class="nav-text">顺序表 - 类模版</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序表-应用"><span class="nav-number">2.</span> <span class="nav-text">顺序表 - 应用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Training-Procedures"><span class="nav-number">2.</span> <span class="nav-text">Training Procedures</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Baseline-Training-Procedure"><span class="nav-number">2.1.</span> <span class="nav-text">Baseline Training Procedure</span></a></li></ol></li></ol></div>
             
 
           </div>
