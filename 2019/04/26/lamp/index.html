@@ -102,21 +102,25 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title">
-<meta property="og:url" content="http://yoursite.com/2019/02/14/deep learning/regularization/dropblock/index.html">
+  <meta name="description" content="1 安装 mysql 5.71.1 下载 mysql 源安装包wget http://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm 1.2 安装 mysql 源yum -y install mysql57-community-release-el7-11.noarch.rpm 1.3 安装 mysql 服务器yum in">
+<meta name="keywords" content="linux,apache,mysql,php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lamp">
+<meta property="og:url" content="http://yoursite.com/2019/04/26/lamp/index.html">
 <meta property="og:site_name">
+<meta property="og:description" content="1 安装 mysql 5.71.1 下载 mysql 源安装包wget http://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm 1.2 安装 mysql 源yum -y install mysql57-community-release-el7-11.noarch.rpm 1.3 安装 mysql 服务器yum in">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T08:42:28.754Z">
+<meta property="og:updated_time" content="2019-04-26T11:36:39.084Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title">
+<meta name="twitter:title" content="lamp">
+<meta name="twitter:description" content="1 安装 mysql 5.71.1 下载 mysql 源安装包wget http://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm 1.2 安装 mysql 源yum -y install mysql57-community-release-el7-11.noarch.rpm 1.3 安装 mysql 服务器yum in">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/14/deep learning/regularization/dropblock/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/26/lamp/">
 
 
 
@@ -126,7 +130,7 @@
   };
 </script>
 
-  <title> | </title>
+  <title>lamp | </title>
   
 
 
@@ -291,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/14/deep learning/regularization/dropblock/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/26/lamp/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xuxiaokang">
@@ -308,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">lamp
               
             
           </h1>
@@ -333,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2019-02-14 22:27:14 / 修改时间：16:42:28" itemprop="dateCreated datePublished" datetime="2019-02-14T22:27:14+08:00">2019-02-14</time>
+              <time title="创建时间：2019-04-26 19:36:31 / 修改时间：19:36:39" itemprop="dateCreated datePublished" datetime="2019-04-26T19:36:31+08:00">2019-04-26</time>
             
 
             
@@ -343,6 +347,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -371,7 +393,50 @@
       
 
       
-        
+        <h1 id="1-安装-mysql-5-7"><a href="#1-安装-mysql-5-7" class="headerlink" title="1 安装 mysql 5.7"></a>1 安装 mysql 5.7</h1><h2 id="1-1-下载-mysql-源安装包"><a href="#1-1-下载-mysql-源安装包" class="headerlink" title="1.1 下载 mysql 源安装包"></a>1.1 下载 mysql 源安装包</h2><pre><code>wget http://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+</code></pre><h2 id="1-2-安装-mysql-源"><a href="#1-2-安装-mysql-源" class="headerlink" title="1.2 安装 mysql 源"></a>1.2 安装 mysql 源</h2><pre><code>yum -y install mysql57-community-release-el7-11.noarch.rpm
+</code></pre><h2 id="1-3-安装-mysql-服务器"><a href="#1-3-安装-mysql-服务器" class="headerlink" title="1.3 安装 mysql 服务器"></a>1.3 安装 mysql 服务器</h2><pre><code>yum install mysql-community-server
+</code></pre><h2 id="1-4-启动-mysql-服务"><a href="#1-4-启动-mysql-服务" class="headerlink" title="1.4 启动 mysql 服务"></a>1.4 启动 mysql 服务</h2><pre><code>systemctl start mysqld.service
+</code></pre><h2 id="1-5-初始化数据库密码"><a href="#1-5-初始化数据库密码" class="headerlink" title="1.5 初始化数据库密码"></a>1.5 初始化数据库密码</h2><pre><code>查看初始密码
+grep &quot;password&quot; /var/log/mysqld.log
+
+登陆
+mysql -u root -p
+
+修改密码
+alter user &apos;root&apos;@&apos;localhost&apos; identified by &apos;YOUR PASSWORD&apos;;
+
+ps: mysql 默认安装了密码安全检查插件（validate_password），默认密码检查策略要求密码必须包含：大小写字母、数字和特殊符号，并且长度不能少于8位。
+</code></pre><h2 id="1-6-数据库授权"><a href="#1-6-数据库授权" class="headerlink" title="1.6 数据库授权"></a>1.6 数据库授权</h2><pre><code>方法一：
+mysql&gt; grant privileges on *.* to &apos;root&apos;@&apos;%&apos; identified by &apos;YOUR PASSWORD&apos; with grant option;
+mysql&gt; flush privileges;
+
+方法二：(没有测试过)
+mysql&gt; use mysql;
+mysql&gt; update user set host = &apos;%&apos; where user = &apos;root&apos;; 
+mysql&gt; select host, user from user;
+</code></pre><h2 id="1-7-设置自动启动"><a href="#1-7-设置自动启动" class="headerlink" title="1.7 设置自动启动"></a>1.7 设置自动启动</h2><pre><code>systemctl enable mysqld
+systemctl daemon-reload
+</code></pre><h1 id="2-安装-php-7-2"><a href="#2-安装-php-7-2" class="headerlink" title="2 安装 php 7.2"></a>2 安装 php 7.2</h1><pre><code>rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
+
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
+yum remove php-common -y
+
+yum install -y php72w php72w-opcache php72w-xml php72w-mcrypt php72w-gd php72w-devel php72w-mysql php72w-intl php72w-mbstring
+</code></pre><h1 id="3-安装-apache"><a href="#3-安装-apache" class="headerlink" title="3 安装 apache"></a>3 安装 apache</h1><pre><code>yum install httpd
+systemctl start httpd
+</code></pre><h2 id="3-1-apache-安装目录"><a href="#3-1-apache-安装目录" class="headerlink" title="3.1 apache 安装目录"></a>3.1 apache 安装目录</h2><pre><code>/etc/httpd
+</code></pre><h2 id="3-2-修改-DocumentRoot"><a href="#3-2-修改-DocumentRoot" class="headerlink" title="3.2 修改 DocumentRoot"></a>3.2 修改 DocumentRoot</h2><pre><code>cd /etc/httpd/conf
+vim httpd.conf
+DocumentRoot &quot;/root/thinkphp/public&quot;
+</code></pre><h2 id="3-3-配置-Directory"><a href="#3-3-配置-Directory" class="headerlink" title="3.3 配置 Directory"></a>3.3 配置 Directory</h2><pre><code>&lt;Directory &quot;/root/thinkphp/public&quot;&gt;
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+&lt;/Directory&gt;
+</code></pre><h2 id="3-4-给-root-目录-777-权限-非常重要"><a href="#3-4-给-root-目录-777-权限-非常重要" class="headerlink" title="3.4 给 /root 目录 777 权限 (非常重要)"></a>3.4 给 /root 目录 777 权限 (非常重要)</h2><pre><code>chmod -R 777 /root
+</code></pre>
       
     </div>
 
@@ -389,6 +454,18 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+            <a href="/tags/apache/" rel="tag"><i class="fa fa-tag"></i> apache</a>
+          
+            <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
+          
+            <a href="/tags/php/" rel="tag"><i class="fa fa-tag"></i> php</a>
+          
+        </div>
+      
 
       
       
@@ -398,8 +475,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/17/deep learning/regularization/regularization/" rel="next" title="regularization">
-                <i class="fa fa-chevron-left"></i> regularization
+              <a href="/2018/12/17/deep learning/paper/Bag-of-Tricks/" rel="next" title="Bag of Tricks for Image Classification with Convolutional Neural Networks">
+                <i class="fa fa-chevron-left"></i> Bag of Tricks for Image Classification with Convolutional Neural Networks
               </a>
             
           </div>
@@ -455,8 +532,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -471,7 +557,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -531,7 +617,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -571,6 +661,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装-mysql-5-7"><span class="nav-text">1 安装 mysql 5.7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-下载-mysql-源安装包"><span class="nav-text">1.1 下载 mysql 源安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-安装-mysql-源"><span class="nav-text">1.2 安装 mysql 源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-安装-mysql-服务器"><span class="nav-text">1.3 安装 mysql 服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-启动-mysql-服务"><span class="nav-text">1.4 启动 mysql 服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-初始化数据库密码"><span class="nav-text">1.5 初始化数据库密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-数据库授权"><span class="nav-text">1.6 数据库授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-设置自动启动"><span class="nav-text">1.7 设置自动启动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-安装-php-7-2"><span class="nav-text">2 安装 php 7.2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-安装-apache"><span class="nav-text">3 安装 apache</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-apache-安装目录"><span class="nav-text">3.1 apache 安装目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-修改-DocumentRoot"><span class="nav-text">3.2 修改 DocumentRoot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-配置-Directory"><span class="nav-text">3.3 配置 Directory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-给-root-目录-777-权限-非常重要"><span class="nav-text">3.4 给 /root 目录 777 权限 (非常重要)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
