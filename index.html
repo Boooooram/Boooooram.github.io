@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/26/tensorflow/tensorflow/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/linux/update_gcc/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xuxiaokang">
@@ -310,7 +310,580 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/26/tensorflow/tensorflow/" itemprop="url">
+                <a class="post-title-link" href="/2019/08/11/linux/update_gcc/" itemprop="url">
+                  linux - update gcc
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-11 23:01:49" itemprop="dateCreated datePublished" datetime="2019-08-11T23:01:49+08:00">2019-08-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-12 12:57:55" itemprop="dateModified" datetime="2019-08-12T12:57:55+08:00">2019-08-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-下载源码（链接）"><a href="#1-下载源码（链接）" class="headerlink" title="1.下载源码（链接）"></a>1.下载源码（<a href="http://ftp.gnu.org/gnu/gcc/" target="_blank" rel="noopener">链接</a>）</h1><blockquote>
+<p>找到想要的版本，要么用wget下载，要么下载到本地后上传到服务器</p>
+</blockquote>
+<pre><code>wget http://ftp.gnu.org/gnu/gcc/gcc-9.1.0/gcc-9.1.0.tar.gz
+</code></pre><h1 id="2-解压"><a href="#2-解压" class="headerlink" title="2.解压"></a>2.解压</h1><blockquote>
+<p>解压到你希望的目录，我解压到了当前目录</p>
+</blockquote>
+<pre><code>tar -zxvf gcc-9.1.0.tar.gz
+</code></pre><h1 id="3-安装依赖"><a href="#3-安装依赖" class="headerlink" title="3.安装依赖"></a>3.安装依赖</h1><pre><code>cd gcc-9.1.0
+./contrib/download_prerequisites
+</code></pre><h1 id="4-建立临时目录，存放编译过程中的中间文件"><a href="#4-建立临时目录，存放编译过程中的中间文件" class="headerlink" title="4.建立临时目录，存放编译过程中的中间文件"></a>4.建立临时目录，存放编译过程中的中间文件</h1><pre><code>mkdir gcc-9.1.0-build
+cd gcc-9.1.0-build
+../configure --disable-multilib
+</code></pre><blockquote>
+<p>不加『 –disable-multilib 』会出现以下错误信息：<br>configure: error: I suspect your system does not have 32-bit development libraries (libc and headers). If you have them, rerun configure with –enable-multilib. If you do not have them, and want to build a 64-bit-only compiler, rerun configure with –disable-multilib.</p>
+</blockquote>
+<h1 id="5-编译-amp-安装"><a href="#5-编译-amp-安装" class="headerlink" title="5.编译 &amp; 安装"></a>5.编译 &amp; 安装</h1><blockquote>
+<p>单核cpu编译太久了，挂在后台干其他事情去了，cpu核数多的话，用 -j 选项</p>
+</blockquote>
+<pre><code>nohup make &amp;
+</code></pre><blockquote>
+<p>出现『 make[1]: Leaving directory `/Downloads/gcc-9.1.0/gcc-9.1.0-build’ 』就说明编译好了，编译好之后，再安装，我还是选择挂在后台安装</p>
+</blockquote>
+<pre><code>nohup make install &amp;
+</code></pre><blockquote>
+<p>因为运行configure命令时，没有指定安装目录，因此上述命令会将最新版本的GCC编译器安装到默认位置：/usr/local，也就是说，头文件在/usr/local/include目录，可执行文件在/usr/local/bin目录，库文件在/usr/local/lib目录。</p>
+</blockquote>
+<h1 id="6-指定本机使用最新版本gcc编译器"><a href="#6-指定本机使用最新版本gcc编译器" class="headerlink" title="6.指定本机使用最新版本gcc编译器"></a>6.指定本机使用最新版本gcc编译器</h1><blockquote>
+<p>使用『 lternatives 』命令配置增加最新版本编译器，注意：gcc是编译C程序的默认程序，g++是编译C++程序的默认程序。</p>
+</blockquote>
+<pre><code>alternatives --install /usr/bin/gcc gcc /usr/local/bin/gcc 50
+alternatives --install /usr/bin/g++ g++ /usr/local/bin/g++ 50
+
+用法：alternatives --install &lt;link&gt; &lt;name&gt; &lt;path&gt; &lt;priority&gt;
+                [--initscript &lt;service&gt;]
+                [--slave &lt;link&gt; &lt;name&gt; &lt;path&gt;]*
+    alternatives --remove &lt;name&gt; &lt;path&gt;
+    alternatives --auto &lt;name&gt;
+    alternatives --config &lt;name&gt;
+    alternatives --display &lt;name&gt;
+    alternatives --set &lt;name&gt; &lt;path&gt;
+</code></pre><blockquote>
+<p>选择默认使用的GCC编译器版本：</p>
+</blockquote>
+<pre><code>alternatives --config gcc
+</code></pre><h1 id="7-查看gcc和g-版本"><a href="#7-查看gcc和g-版本" class="headerlink" title="7.查看gcc和g++版本"></a>7.查看gcc和g++版本</h1><pre><code>gcc -v
+g++ -v
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/08/ss/ss/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/08/ss/ss/" itemprop="url">
+                  ss
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-08 18:01:59 / 修改时间：18:20:18" itemprop="dateCreated datePublished" datetime="2019-07-08T18:01:59+08:00">2019-07-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>修改配置文件：</p>
+<p>vim /etc/shadowsocks.json<br>同时启用 ipv4 和 ipv6：</p>
+<p>{<br>    “server”:[“[::0]”,”0.0.0.0”],<br>    “server_port”:8388,<br>    “local_port”:1080,<br>    “password”:”your_password”,<br>    “timeout”:60,<br>    “method”:”aes-256-gcm”<br>}<br>设置开机启动：</p>
+<p>chmod +x /etc/rc.d/rc.local<br>vi /etc/rc.local<br>在文件末尾加入：</p>
+<p>/usr/bin/ssserver -c /etc/shadowsocks.json -d start<br>运行<br>启动 Shadowsocks：</p>
+<p>ssserver -c /etc/shadowsocks.json -d start<br>此时，我们还不能通过外网访问服务器，因为防火墙并没有开启相应的端口，编辑防火墙开放的端口服务：</p>
+<p>vi /etc/firewalld/zones/public.xml<br>添加如下行：</p>
+<p><port protocol="tcp" port="服务器端口"></port></p>
+<p><port protocol="udp" port="服务器端口"><br>使新规则生效：</port></p>
+<p>firewall-cmd –complete-reload<br>至此，shadowsocks 已经可以使用。</p>
+<h1 id="安装防火墙"><a href="#安装防火墙" class="headerlink" title="安装防火墙"></a>安装防火墙</h1><p>yum install firewalld</p>
+<h1 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h1><p>systemctl start firewalld</p>
+<h1 id="查看目前已经开启的端口号"><a href="#查看目前已经开启的端口号" class="headerlink" title="查看目前已经开启的端口号"></a>查看目前已经开启的端口号</h1><p>firewall-cmd –list-ports</p>
+<h1 id="端口号是你自己设置的端口"><a href="#端口号是你自己设置的端口" class="headerlink" title="端口号是你自己设置的端口"></a>端口号是你自己设置的端口</h1><p>firewall-cmd –permanent –zone=public –add-port=1225/tcp<br>firewall-cmd –permanent –zone=public –add-port=1226/tcp<br>firewall-cmd –permanent –zone=public –add-port=1227/tcp</p>
+<h1 id="重载更新的端口信息"><a href="#重载更新的端口信息" class="headerlink" title="重载更新的端口信息"></a>重载更新的端口信息</h1><p>firewall-cmd –reload</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/tensorflow/layers/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/04/tensorflow/layers/" itemprop="url">
+                  tensorflow - tf.layers
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-04 15:53:42 / 修改时间：16:10:32" itemprop="dateCreated datePublished" datetime="2019-06-04T15:53:42+08:00">2019-06-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/deep-learning/" itemprop="url" rel="index"><span itemprop="name">deep learning</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>tf.layers.conv2d(
+    inputs,
+    filters,
+    kernel_size,
+    strides=(1, 1),
+    padding=&apos;valid&apos;,
+    data_format=&apos;channels_last&apos;,
+    dilation_rate=(1, 1),
+    activation=None,
+    use_bias=True,
+    kernel_initializer=None,
+    bias_initializer=tf.zeros_initializer(),
+    kernel_regularizer=None,
+    bias_regularizer=None,
+    activity_regularizer=None,
+    kernel_constraint=None,
+    bias_constraint=None,
+    trainable=True,
+    name=None,
+    reuse=None
+)
+</code></pre><h2 id="stride-1-时"><a href="#stride-1-时" class="headerlink" title="stride = 1 时"></a>stride = 1 时</h2><pre><code>设input = [M, M], kernel_size = [F, F], stride = [1, 1]
+</code></pre><h3 id="padding-valid-时"><a href="#padding-valid-时" class="headerlink" title="padding = valid 时"></a>padding = valid 时</h3><pre><code>output = ( M - F ) / 1 + 1
+</code></pre><h3 id="padding-same-时"><a href="#padding-same-时" class="headerlink" title="padding = same 时"></a>padding = same 时</h3><pre><code>P = ( F - 1 ) / 2
+output = ( M + 2*P - F ) / 1 + 1
+</code></pre><h2 id="stride-1-时-1"><a href="#stride-1-时-1" class="headerlink" title="stride != 1 时"></a>stride != 1 时</h2><pre><code>设input = [M, M], kernel_size = [F, F], stride = [s, s]
+</code></pre><h3 id="padding-valid-时-1"><a href="#padding-valid-时-1" class="headerlink" title="padding = valid 时"></a>padding = valid 时</h3><pre><code>output = ceil( ( M - F + 1 ) / s )
+</code></pre><h3 id="padding-same-时-1"><a href="#padding-same-时-1" class="headerlink" title="padding = same 时"></a>padding = same 时</h3><pre><code>output = ceil( M / s )
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/26/tensorflow/get_vadiable/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/26/tensorflow/get_vadiable/" itemprop="url">
                   tensorflow - tf.get_variable()
                 </a>
               
@@ -354,7 +927,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-27 12:46:44" itemprop="dateModified" datetime="2019-04-27T12:46:44+08:00">2019-04-27</time>
+                <time title="修改时间：2019-06-04 15:53:22" itemprop="dateModified" datetime="2019-06-04T15:53:22+08:00">2019-06-04</time>
               
             
           </span>
@@ -2064,551 +2637,6 @@ ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_p
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/05/MacBook/MacBook_proxychains-ng/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xuxiaokang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/05/MacBook/MacBook_proxychains-ng/" itemprop="url">
-                  MacBook - 安装proxychains-ng
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-05 20:59:01" itemprop="dateCreated datePublished" datetime="2018-07-05T20:59:01+08:00">2018-07-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-14 16:42:28" itemprop="dateModified" datetime="2019-02-14T16:42:28+08:00">2019-02-14</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/MacBook/" itemprop="url" rel="index"><span itemprop="name">MacBook</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安装-proxychains-ng"><a href="#安装-proxychains-ng" class="headerlink" title="安装 proxychains-ng"></a>安装 <a href="https://github.com/rofl0r/proxychains-ng" target="_blank" rel="noopener">proxychains-ng</a></h1><pre><code>brew install proxychains-ng
-</code></pre><h1 id="配置-proxychains-ng"><a href="#配置-proxychains-ng" class="headerlink" title="配置 proxychains-ng"></a>配置 proxychains-ng</h1><pre><code>vim /usr/local/etc/proxychains.conf
-
-在最后一行添加(端口号和ss里的Socks5端口号一致)
-socks5 127.0.0.1 1086
-</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic1.png" alt="avatar"><br><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic2.png" alt="avatar"></p>
-<h1 id="proxychains-ng-测试"><a href="#proxychains-ng-测试" class="headerlink" title="proxychains-ng 测试"></a>proxychains-ng 测试</h1><pre><code>proxychains4 curl ip.cn
-</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic3.png" alt="avatar"></p>
-<h1 id="proxychains-ng-优化"><a href="#proxychains-ng-优化" class="headerlink" title="proxychains-ng 优化"></a>proxychains-ng 优化</h1><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic6.png" alt="avatar"><br>给proxychains4增加一个别名，在 ~/.bash_profile 末尾加入如下行：</p>
-<pre><code>#   ---------------------------------------
-#   proxychain-ng config
-#   ---------------------------------------
-alias pc=&apos;proxychains4&apos;
-</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic4.png" alt="avatar"></p>
-<pre><code>source ~/.bash_profile
-</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic5.png" alt="avatar"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/05/MacBook/MacBook_nvm/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xuxiaokang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/05/MacBook/MacBook_nvm/" itemprop="url">
-                  MacBook - 安装nvm
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-05 08:44:15" itemprop="dateCreated datePublished" datetime="2018-07-05T08:44:15+08:00">2018-07-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-14 16:42:28" itemprop="dateModified" datetime="2019-02-14T16:42:28+08:00">2019-02-14</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/MacBook/" itemprop="url" rel="index"><span itemprop="name">MacBook</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安装-Homebrew"><a href="#安装-Homebrew" class="headerlink" title="安装 Homebrew"></a>安装 <a href="https://brew.sh" target="_blank" rel="noopener">Homebrew</a></h1><pre><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre><h1 id="安装-nvm"><a href="#安装-nvm" class="headerlink" title="安装 nvm"></a>安装 nvm</h1><pre><code>brew install nvm
-</code></pre><p><img src="/2018/07/05/MacBook/MacBook_nvm/pic1.png" alt="avatar"></p>
-<h1 id="添加-nvm-相关配置"><a href="#添加-nvm-相关配置" class="headerlink" title="添加 nvm 相关配置"></a>添加 nvm 相关配置</h1><p>You should create NVM’s working directory if it doesn’t exist:</p>
-<pre><code>mkdir ~/.nvm
-</code></pre><p>Add the following to ~/.bash_profile or your desired shell configuration file:</p>
-<pre><code>export NVM_DIR=&quot;$HOME/.nvm&quot;
-. &quot;/usr/local/opt/nvm/nvm.sh&quot;
-</code></pre><h1 id="使配置文件生效"><a href="#使配置文件生效" class="headerlink" title="使配置文件生效"></a>使配置文件生效</h1><pre><code>source ~/.bash_profile
-</code></pre><h1 id="查看-nvm-相关命令"><a href="#查看-nvm-相关命令" class="headerlink" title="查看 nvm 相关命令"></a>查看 nvm 相关命令</h1><p><img src="/2018/07/05/MacBook/MacBook_nvm/pic2.png" alt="avatar"></p>
-<h1 id="通过-nvm-安装-LTS版Node"><a href="#通过-nvm-安装-LTS版Node" class="headerlink" title="通过 nvm 安装 LTS版Node"></a>通过 nvm 安装 LTS版Node</h1><p><img src="/2018/07/05/MacBook/MacBook_nvm/pic3.png" alt="avatar"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/05/MacBook/MacBook_tips/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xuxiaokang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/05/MacBook/MacBook_tips/" itemprop="url">
-                  MacBook - tips
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-05 08:41:06" itemprop="dateCreated datePublished" datetime="2018-07-05T08:41:06+08:00">2018-07-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-14 16:42:28" itemprop="dateModified" datetime="2019-02-14T16:42:28+08:00">2019-02-14</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/MacBook/" itemprop="url" rel="index"><span itemprop="name">MacBook</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="在『Security-amp-Privacy』里显示『Anywhere』选项"><a href="#在『Security-amp-Privacy』里显示『Anywhere』选项" class="headerlink" title="在『Security &amp; Privacy』里显示『Anywhere』选项"></a>在『Security &amp; Privacy』里显示『Anywhere』选项</h1><pre><code>sudo spctl --master-disable
-</code></pre><h1 id="在『Security-amp-Privacy』里隐藏『Anywhere』选项"><a href="#在『Security-amp-Privacy』里隐藏『Anywhere』选项" class="headerlink" title="在『Security &amp; Privacy』里隐藏『Anywhere』选项"></a>在『Security &amp; Privacy』里隐藏『Anywhere』选项</h1><pre><code>sudo spctl --master-enable
-</code></pre><hr>
-<h1 id="显示隐藏文件和文件夹"><a href="#显示隐藏文件和文件夹" class="headerlink" title="显示隐藏文件和文件夹"></a>显示隐藏文件和文件夹</h1><pre><code>defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder
-</code></pre><h1 id="再次隐藏原本隐藏的文件和文件夹"><a href="#再次隐藏原本隐藏的文件和文件夹" class="headerlink" title="再次隐藏原本隐藏的文件和文件夹"></a>再次隐藏原本隐藏的文件和文件夹</h1><pre><code>defaults write com.apple.finder AppleShowAllFiles -boolean false ; killall Finder
-</code></pre><hr>
-<h1 id="开启『SIP』System-Integrity-Protection（系统完整性保护·）·"><a href="#开启『SIP』System-Integrity-Protection（系统完整性保护·）·" class="headerlink" title="开启『SIP』System Integrity Protection（系统完整性保护·）·"></a>开启『SIP』System Integrity Protection（系统完整性保护·）·</h1><pre><code>csrutil enable
-</code></pre><h1 id="关闭『SIP』System-Integrity-Protection（系统完整性保护）"><a href="#关闭『SIP』System-Integrity-Protection（系统完整性保护）" class="headerlink" title="关闭『SIP』System Integrity Protection（系统完整性保护）"></a>关闭『SIP』System Integrity Protection（系统完整性保护）</h1><pre><code>csrutil disable
-</code></pre><h1 id="查看哪些目录有rootless限制"><a href="#查看哪些目录有rootless限制" class="headerlink" title="查看哪些目录有rootless限制"></a>查看哪些目录有rootless限制</h1><pre><code>cd /
-ls -lO|grep restricted
-</code></pre><hr>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2656,7 +2684,7 @@ ls -lO|grep restricted
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2720,7 +2748,13 @@ ls -lO|grep restricted
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="tf.get_variable(     name,     shape=None,     dtype=None,     initializer=None,     regularizer=None,     trainable=None,     collections=None,     caching_device=None,     partitioner=None,     vali">
+  <meta name="description" content="tf.layers.conv2d(     inputs,     filters,     kernel_size,     strides=(1, 1),     padding=&amp;apos;valid&amp;apos;,     data_format=&amp;apos;channels_last&amp;apos;,     dilation_rate=(1, 1),     activation=None,">
 <meta name="keywords" content="tensorflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tensorflow - tf.get_variable()">
-<meta property="og:url" content="http://yoursite.com/2019/04/26/tensorflow/tensorflow/index.html">
+<meta property="og:title" content="tensorflow - tf.layers">
+<meta property="og:url" content="http://yoursite.com/2019/06/04/tensorflow/layers/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="tf.get_variable(     name,     shape=None,     dtype=None,     initializer=None,     regularizer=None,     trainable=None,     collections=None,     caching_device=None,     partitioner=None,     vali">
+<meta property="og:description" content="tf.layers.conv2d(     inputs,     filters,     kernel_size,     strides=(1, 1),     padding=&amp;apos;valid&amp;apos;,     data_format=&amp;apos;channels_last&amp;apos;,     dilation_rate=(1, 1),     activation=None,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-27T04:46:44.204Z">
+<meta property="og:updated_time" content="2019-06-04T08:10:32.381Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tensorflow - tf.get_variable()">
-<meta name="twitter:description" content="tf.get_variable(     name,     shape=None,     dtype=None,     initializer=None,     regularizer=None,     trainable=None,     collections=None,     caching_device=None,     partitioner=None,     vali">
+<meta name="twitter:title" content="tensorflow - tf.layers">
+<meta name="twitter:description" content="tf.layers.conv2d(     inputs,     filters,     kernel_size,     strides=(1, 1),     padding=&amp;apos;valid&amp;apos;,     data_format=&amp;apos;channels_last&amp;apos;,     dilation_rate=(1, 1),     activation=None,">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/26/tensorflow/tensorflow/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/04/tensorflow/layers/">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>tensorflow - tf.get_variable() | </title>
+  <title>tensorflow - tf.layers | </title>
   
 
 
@@ -295,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/26/tensorflow/tensorflow/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/tensorflow/layers/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xuxiaokang">
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">tensorflow - tf.get_variable()
+          <h1 class="post-title" itemprop="name headline">tensorflow - tf.layers
               
             
           </h1>
@@ -337,24 +337,12 @@
                 
               
 
-              <time title="创建时间：2019-04-26 19:55:13" itemprop="dateCreated datePublished" datetime="2019-04-26T19:55:13+08:00">2019-04-26</time>
+              <time title="创建时间：2019-06-04 15:53:42 / 修改时间：16:10:32" itemprop="dateCreated datePublished" datetime="2019-06-04T15:53:42+08:00">2019-06-04</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-27 12:46:44" itemprop="dateModified" datetime="2019-04-27T12:46:44+08:00">2019-04-27</time>
               
             
           </span>
@@ -405,171 +393,34 @@
       
 
       
-        <pre><code>tf.get_variable(
-    name,
-    shape=None,
-    dtype=None,
-    initializer=None,
-    regularizer=None,
-    trainable=None,
-    collections=None,
-    caching_device=None,
-    partitioner=None,
-    validate_shape=True,
-    use_resource=None,
-    custom_getter=None,
-    constraint=None,
-    synchronization=tf.VariableSynchronization.AUTO,
-    aggregation=tf.VariableAggregation.NONE
+        <pre><code>tf.layers.conv2d(
+    inputs,
+    filters,
+    kernel_size,
+    strides=(1, 1),
+    padding=&apos;valid&apos;,
+    data_format=&apos;channels_last&apos;,
+    dilation_rate=(1, 1),
+    activation=None,
+    use_bias=True,
+    kernel_initializer=None,
+    bias_initializer=tf.zeros_initializer(),
+    kernel_regularizer=None,
+    bias_regularizer=None,
+    activity_regularizer=None,
+    kernel_constraint=None,
+    bias_constraint=None,
+    trainable=True,
+    name=None,
+    reuse=None
 )
-
-with tf.variable_scope(&apos;foo&apos;, reuse=tf.AUTO_REUSE) as foo:
-    with tf.variable_scope(&apos;bar&apos;, reuse=tf.AUTO_RESUE) as bar:
-        a = tf.get_variable(name=&apos;a&apos;, shape=[2, 3], dtype=tf.float32, initializer=None)
-        sess.run(tf.global_variables_initializer())
-        print(sess.run(a))
-        print(a.name)
-
-output:     [0]
-            foo/bar/a:0
-</code></pre><h1 id="initializer"><a href="#initializer" class="headerlink" title="initializer"></a>initializer</h1><pre><code>注意：ValueError: If initializer is a constant, do not specify shape.
-</code></pre><h2 id="1-tf-constant-initializer"><a href="#1-tf-constant-initializer" class="headerlink" title="1 tf.constant_initializer()"></a>1 tf.constant_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[1], dtype=tf.float32, initializer=tf.constant_initializer(3.14))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [3.123]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, initializer=tf.constant(3.14))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: 3.14
-        &lt;class &apos;numpy.float32&apos;&gt;
-</code></pre><h2 id="2-tf-zeros-initializer"><a href="#2-tf-zeros-initializer" class="headerlink" title="2 tf.zeros_initializer()"></a>2 tf.zeros_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32, initializer=tf.zeros_initializer(dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[0. 0.]
-         [0. 0.]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, initializer=tf.zeros(shape=[2, 2], dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[0. 0.]
-         [0. 0.]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="3-tf-ones-initializer"><a href="#3-tf-ones-initializer" class="headerlink" title="3 tf.ones_initializer()"></a>3 tf.ones_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32, initializer=tf.ones_initializer(dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[1. 1.]
-         [1. 1.]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, initializer=tf.ones(shape=[2, 2], dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[1. 1.]
-         [1. 1.]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="4-tf-truncated-normal-initializer"><a href="#4-tf-truncated-normal-initializer" class="headerlink" title="4 tf.truncated_normal_initializer()"></a>4 tf.truncated_normal_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32, 
-                    initializer=tf.truncated_normal_initializer(mean=0.0, stddev=1.0, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[-0.47436506 -0.16820015]
-         [ 1.5512161  -0.46900874]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, 
-                    initializer=tf.truncated_normal(shape=[2, 2], mean=0.0, stddev=1.0, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[-1.3907589   0.11421945]
-         [ 0.65596086 -0.46631524]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="5-tf-random-normal-initializer"><a href="#5-tf-random-normal-initializer" class="headerlink" title="5 tf.random_normal_initializer()"></a>5 tf.random_normal_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32, 
-                    initializer=tf.random_normal_initializer(mean=0.0, stddev=1.0, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[-1.1431077  -0.4355431 ]
-         [-0.59528947  1.4470074 ]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, 
-                    initializer=tf.random_normal(shape=[2, 2], mean=0.0, stddev=1.0, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[-0.8873615 -1.5804261]
-         [ 0.978012  -2.0380049]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="6-tf-random-uniform-initializer"><a href="#6-tf-random-uniform-initializer" class="headerlink" title="6 tf.random_uniform_initializer()"></a>6 tf.random_uniform_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32, 
-                    initializer=tf.random_uniform_initializer(minval=0, maxval=None, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[0.18737555 0.00549996]
-         [0.1582321  0.05845535]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, 
-                    initializer=tf.random_uniform(shape=[2, 2], minval=0, maxval=None, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[0.60605323 0.50872326]
-         [0.9280783  0.45167053]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="7-tf-orthogonal-initializer-正交矩阵"><a href="#7-tf-orthogonal-initializer-正交矩阵" class="headerlink" title="7 tf.orthogonal_initializer()    正交矩阵"></a>7 tf.orthogonal_initializer()    正交矩阵</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32,
-                initializer=tf.orthogonal_initializer(gain=1.0, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[-0.93122697  0.3644396 ]
-         [-0.3644396  -0.931227  ]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="8-tf-glorot-uniform-initializer"><a href="#8-tf-glorot-uniform-initializer" class="headerlink" title="8 tf.glorot_uniform_initializer()"></a>8 tf.glorot_uniform_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32,
-                    initializer=tf.glorot_uniform_initializer(seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-</code></pre><h2 id="9-tf-glorot-normal-initializer"><a href="#9-tf-glorot-normal-initializer" class="headerlink" title="9 tf.glorot_normal_initializer()"></a>9 tf.glorot_normal_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32,
-                    initializer=tf.glorot_normal_initializer(seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
+</code></pre><h2 id="stride-1-时"><a href="#stride-1-时" class="headerlink" title="stride = 1 时"></a>stride = 1 时</h2><pre><code>设input = [M, M], kernel_size = [F, F], stride = [1, 1]
+</code></pre><h3 id="padding-valid-时"><a href="#padding-valid-时" class="headerlink" title="padding = valid 时"></a>padding = valid 时</h3><pre><code>output = ( M - F ) / 1 + 1
+</code></pre><h3 id="padding-same-时"><a href="#padding-same-时" class="headerlink" title="padding = same 时"></a>padding = same 时</h3><pre><code>P = ( F - 1 ) / 2
+output = ( M + 2*P - F ) / 1 + 1
+</code></pre><h2 id="stride-1-时-1"><a href="#stride-1-时-1" class="headerlink" title="stride != 1 时"></a>stride != 1 时</h2><pre><code>设input = [M, M], kernel_size = [F, F], stride = [s, s]
+</code></pre><h3 id="padding-valid-时-1"><a href="#padding-valid-时-1" class="headerlink" title="padding = valid 时"></a>padding = valid 时</h3><pre><code>output = ceil( ( M - F + 1 ) / s )
+</code></pre><h3 id="padding-same-时-1"><a href="#padding-same-时-1" class="headerlink" title="padding = same 时"></a>padding = same 时</h3><pre><code>output = ceil( M / s )
 </code></pre>
       
     </div>
@@ -603,8 +454,8 @@ print(type(sess.run(a)))
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/26/linux/linux_lamp/" rel="next" title="linux - lamp">
-                <i class="fa fa-chevron-left"></i> linux - lamp
+              <a href="/2019/04/26/tensorflow/get_vadiable/" rel="next" title="tensorflow - tf.get_variable()">
+                <i class="fa fa-chevron-left"></i> tensorflow - tf.get_variable()
               </a>
             
           </div>
@@ -612,6 +463,10 @@ print(type(sess.run(a)))
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/08/ss/ss/" rel="prev" title="ss">
+                ss <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -685,7 +540,7 @@ print(type(sess.run(a)))
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -749,7 +604,13 @@ print(type(sess.run(a)))
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -799,7 +660,7 @@ print(type(sess.run(a)))
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#initializer"><span class="nav-text">initializer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-tf-constant-initializer"><span class="nav-text">1 tf.constant_initializer()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-tf-zeros-initializer"><span class="nav-text">2 tf.zeros_initializer()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-tf-ones-initializer"><span class="nav-text">3 tf.ones_initializer()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-tf-truncated-normal-initializer"><span class="nav-text">4 tf.truncated_normal_initializer()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-tf-random-normal-initializer"><span class="nav-text">5 tf.random_normal_initializer()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-tf-random-uniform-initializer"><span class="nav-text">6 tf.random_uniform_initializer()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-tf-orthogonal-initializer-正交矩阵"><span class="nav-text">7 tf.orthogonal_initializer()    正交矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-tf-glorot-uniform-initializer"><span class="nav-text">8 tf.glorot_uniform_initializer()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-tf-glorot-normal-initializer"><span class="nav-text">9 tf.glorot_normal_initializer()</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#stride-1-时"><span class="nav-text">stride = 1 时</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#padding-valid-时"><span class="nav-text">padding = valid 时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#padding-same-时"><span class="nav-text">padding = same 时</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stride-1-时-1"><span class="nav-text">stride != 1 时</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#padding-valid-时-1"><span class="nav-text">padding = valid 时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#padding-same-时-1"><span class="nav-text">padding = same 时</span></a></li></ol></li></ol></div>
             
 
           </div>
