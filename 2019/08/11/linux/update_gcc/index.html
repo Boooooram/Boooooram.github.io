@@ -110,7 +110,7 @@
 <meta property="og:site_name">
 <meta property="og:description" content="1.下载源码（链接） 找到想要的版本，要么用wget下载，要么下载到本地后上传到服务器  wget http://ftp.gnu.org/gnu/gcc/gcc-9.1.0/gcc-9.1.0.tar.gz 2.解压 解压到你希望的目录，我解压到了当前目录  tar -zxvf gcc-9.1.0.tar.gz 3.安装依赖cd gcc-9.1.0 ./contrib/download_prere">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-12T05:02:25.075Z">
+<meta property="og:updated_time" content="2019-08-12T06:42:18.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux - update gcc">
 <meta name="twitter:description" content="1.下载源码（链接） 找到想要的版本，要么用wget下载，要么下载到本地后上传到服务器  wget http://ftp.gnu.org/gnu/gcc/gcc-9.1.0/gcc-9.1.0.tar.gz 2.解压 解压到你希望的目录，我解压到了当前目录  tar -zxvf gcc-9.1.0.tar.gz 3.安装依赖cd gcc-9.1.0 ./contrib/download_prere">
@@ -354,7 +354,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-12 13:02:25" itemprop="dateModified" datetime="2019-08-12T13:02:25+08:00">2019-08-12</time>
+                <time title="修改时间：2019-08-12 14:42:18" itemprop="dateModified" datetime="2019-08-12T14:42:18+08:00">2019-08-12</time>
               
             
           </span>
@@ -452,6 +452,38 @@ alternatives --install /usr/bin/g++ g++ /usr/local/bin/g++ 50
 <pre><code>alternatives --config gcc
 </code></pre><h1 id="7-查看gcc和g-版本"><a href="#7-查看gcc和g-版本" class="headerlink" title="7.查看gcc和g++版本"></a>7.查看gcc和g++版本</h1><pre><code>gcc -v
 g++ -v
+</code></pre><h1 id="8-补充"><a href="#8-补充" class="headerlink" title="8.补充"></a>8.补充</h1><h2 id="8-1-确认默认语言标准"><a href="#8-1-确认默认语言标准" class="headerlink" title="8.1 确认默认语言标准"></a>8.1 确认默认语言标准</h2><pre><code>gcc-3.0.4 gcc-3.1.1 gcc-3.2.3 gcc-3.3.6 gcc-3.4.6 gcc-4.0.4 gcc-4.1.2 gcc-4.2.4 默认是 -std=gnu89    
+gcc-4.3.6 gcc-4.4.7 gcc-4.5.4 gcc-4.6.4 gcc-4.7.4 gcc-4.8.5 gcc-4.9.4 gcc-5.4.0 默认是 -std=gnu++98
+gcc-6.4.0 gcc-7.2.0 默认是 -std=gnu++14
+</code></pre><h2 id="8-2-编译-cpp-文件（gcc-版本-9-1-0）"><a href="#8-2-编译-cpp-文件（gcc-版本-9-1-0）" class="headerlink" title="8.2 编译 cpp 文件（gcc 版本 9.1.0）"></a>8.2 编译 cpp 文件（gcc 版本 9.1.0）</h2><pre><code>g++ -pthread demo.cpp -o demo
+</code></pre><h2 id="8-3-运行文件时，出现『-usr-lib64-libstdc-so-6-version-GLIBCXX-3-4-22’-not-found-』"><a href="#8-3-运行文件时，出现『-usr-lib64-libstdc-so-6-version-GLIBCXX-3-4-22’-not-found-』" class="headerlink" title="8.3 运行文件时，出现『 /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.22’ not found 』"></a>8.3 运行文件时，出现『 /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.22’ not found 』</h2><blockquote>
+<p>原因：升级gcc时，生成的动态库没有替换老版本gcc的动态库导致的，将gcc最新版本的动态库替换系统中老版本的动态库即可解决。</p>
+</blockquote>
+<blockquote>
+<p>检查动态库</p>
+</blockquote>
+<pre><code>strings /usr/lib64/libstdc++.so.6 | grep GLIBC
+</code></pre><blockquote>
+<p>查找编译gcc时生成的最新动态库</p>
+</blockquote>
+<pre><code>find / -name &quot;libstdc++.so*&quot;
+</code></pre><blockquote>
+<p>将查找到的最新动态库libstdc++.so.x.x.xx复制到/usr/lib64目录下</p>
+</blockquote>
+<pre><code>cp /Downloads/gcc-9.1.0/gcc-9.1.0-build/stage1-x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6.0.26 /usr/lib64
+</code></pre><blockquote>
+<p>删除软链接</p>
+</blockquote>
+<pre><code>cd /usr/lib64
+rm -rf libstdc++.so.6
+</code></pre><blockquote>
+<p>将默认库的软连接指向最新动态库</p>
+</blockquote>
+<pre><code>ln -s libstdc++.so.6.0.26 libstdc++.so.6
+</code></pre><blockquote>
+<p>默认动态库升级完成。重新运行以下命令检查动态库：</p>
+</blockquote>
+<pre><code>strings /usr/lib64/libstdc++.so.6 | grep GLIBC
 </code></pre>
       
     </div>
@@ -695,7 +727,7 @@ g++ -v
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-下载源码（链接）"><span class="nav-text">1.下载源码（链接）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-解压"><span class="nav-text">2.解压</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-安装依赖"><span class="nav-text">3.安装依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-建立临时目录，存放编译过程中的中间文件"><span class="nav-text">4.建立临时目录，存放编译过程中的中间文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-编译-amp-安装"><span class="nav-text">5.编译 &amp; 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-指定本机使用最新版本gcc编译器"><span class="nav-text">6.指定本机使用最新版本gcc编译器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-查看gcc和g-版本"><span class="nav-text">7.查看gcc和g++版本</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-下载源码（链接）"><span class="nav-text">1.下载源码（链接）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-解压"><span class="nav-text">2.解压</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-安装依赖"><span class="nav-text">3.安装依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-建立临时目录，存放编译过程中的中间文件"><span class="nav-text">4.建立临时目录，存放编译过程中的中间文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-编译-amp-安装"><span class="nav-text">5.编译 &amp; 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-指定本机使用最新版本gcc编译器"><span class="nav-text">6.指定本机使用最新版本gcc编译器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-查看gcc和g-版本"><span class="nav-text">7.查看gcc和g++版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-补充"><span class="nav-text">8.补充</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-确认默认语言标准"><span class="nav-text">8.1 确认默认语言标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-编译-cpp-文件（gcc-版本-9-1-0）"><span class="nav-text">8.2 编译 cpp 文件（gcc 版本 9.1.0）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3-运行文件时，出现『-usr-lib64-libstdc-so-6-version-GLIBCXX-3-4-22’-not-found-』"><span class="nav-text">8.3 运行文件时，出现『 /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.22’ not found 』</span></a></li></ol></li></ol></div>
             
 
           </div>
