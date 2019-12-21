@@ -291,6 +291,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/21/leetcode/leetcode/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/21/leetcode/leetcode/" itemprop="url">
+                  leetcode
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-21 19:34:02 / 修改时间：19:38:39" itemprop="dateCreated datePublished" datetime="2019-12-21T19:34:02+08:00">2019-12-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-模版"><a href="#1-模版" class="headerlink" title="1 模版"></a>1 模版</h1><h2 id="1-1-欧几里得算法"><a href="#1-1-欧几里得算法" class="headerlink" title="1.1 欧几里得算法"></a>1.1 欧几里得算法</h2><pre><code>int gcd(int a, int b) {
+    return b ? gcd(b, a%b) : a;
+}
+</code></pre><h2 id="1-2-扩展欧几里得算法"><a href="#1-2-扩展欧几里得算法" class="headerlink" title="1.2 扩展欧几里得算法"></a>1.2 扩展欧几里得算法</h2><pre><code>int ex_gcd(int a, int b, int&amp; x, int&amp; y) {
+    if (b == 0) {
+        x = 1;
+        y = 0;
+        return a;
+    }
+    int gcd = ex_gcd(b, a%b, x, y);
+    int temp = x;
+    x = y;
+    y = temp - a/b*y;
+    return gcd;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/pip/pip_with_git/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -871,525 +1043,6 @@ rm -rf libstdc++.so.6
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/tensorflow/layers/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xuxiaokang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/04/tensorflow/layers/" itemprop="url">
-                  tensorflow - tf.layers
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-04 15:53:42 / 修改时间：16:10:32" itemprop="dateCreated datePublished" datetime="2019-06-04T15:53:42+08:00">2019-06-04</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/deep-learning/" itemprop="url" rel="index"><span itemprop="name">deep learning</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>tf.layers.conv2d(
-    inputs,
-    filters,
-    kernel_size,
-    strides=(1, 1),
-    padding=&apos;valid&apos;,
-    data_format=&apos;channels_last&apos;,
-    dilation_rate=(1, 1),
-    activation=None,
-    use_bias=True,
-    kernel_initializer=None,
-    bias_initializer=tf.zeros_initializer(),
-    kernel_regularizer=None,
-    bias_regularizer=None,
-    activity_regularizer=None,
-    kernel_constraint=None,
-    bias_constraint=None,
-    trainable=True,
-    name=None,
-    reuse=None
-)
-</code></pre><h2 id="stride-1-时"><a href="#stride-1-时" class="headerlink" title="stride = 1 时"></a>stride = 1 时</h2><pre><code>设input = [M, M], kernel_size = [F, F], stride = [1, 1]
-</code></pre><h3 id="padding-valid-时"><a href="#padding-valid-时" class="headerlink" title="padding = valid 时"></a>padding = valid 时</h3><pre><code>output = ( M - F ) / 1 + 1
-</code></pre><h3 id="padding-same-时"><a href="#padding-same-时" class="headerlink" title="padding = same 时"></a>padding = same 时</h3><pre><code>P = ( F - 1 ) / 2
-output = ( M + 2*P - F ) / 1 + 1
-</code></pre><h2 id="stride-1-时-1"><a href="#stride-1-时-1" class="headerlink" title="stride != 1 时"></a>stride != 1 时</h2><pre><code>设input = [M, M], kernel_size = [F, F], stride = [s, s]
-</code></pre><h3 id="padding-valid-时-1"><a href="#padding-valid-时-1" class="headerlink" title="padding = valid 时"></a>padding = valid 时</h3><pre><code>output = ceil( ( M - F + 1 ) / s )
-</code></pre><h3 id="padding-same-时-1"><a href="#padding-same-时-1" class="headerlink" title="padding = same 时"></a>padding = same 时</h3><pre><code>output = ceil( M / s )
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/26/tensorflow/get_vadiable/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xuxiaokang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/26/tensorflow/get_vadiable/" itemprop="url">
-                  tensorflow - tf.get_variable()
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-26 19:55:13" itemprop="dateCreated datePublished" datetime="2019-04-26T19:55:13+08:00">2019-04-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-04 15:53:22" itemprop="dateModified" datetime="2019-06-04T15:53:22+08:00">2019-06-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/deep-learning/" itemprop="url" rel="index"><span itemprop="name">deep learning</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>tf.get_variable(
-    name,
-    shape=None,
-    dtype=None,
-    initializer=None,
-    regularizer=None,
-    trainable=None,
-    collections=None,
-    caching_device=None,
-    partitioner=None,
-    validate_shape=True,
-    use_resource=None,
-    custom_getter=None,
-    constraint=None,
-    synchronization=tf.VariableSynchronization.AUTO,
-    aggregation=tf.VariableAggregation.NONE
-)
-
-with tf.variable_scope(&apos;foo&apos;, reuse=tf.AUTO_REUSE) as foo:
-    with tf.variable_scope(&apos;bar&apos;, reuse=tf.AUTO_RESUE) as bar:
-        a = tf.get_variable(name=&apos;a&apos;, shape=[2, 3], dtype=tf.float32, initializer=None)
-        sess.run(tf.global_variables_initializer())
-        print(sess.run(a))
-        print(a.name)
-
-output:     [0]
-            foo/bar/a:0
-</code></pre><h1 id="initializer"><a href="#initializer" class="headerlink" title="initializer"></a>initializer</h1><pre><code>注意：ValueError: If initializer is a constant, do not specify shape.
-</code></pre><h2 id="1-tf-constant-initializer"><a href="#1-tf-constant-initializer" class="headerlink" title="1 tf.constant_initializer()"></a>1 tf.constant_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[1], dtype=tf.float32, initializer=tf.constant_initializer(3.14))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [3.123]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, initializer=tf.constant(3.14))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: 3.14
-        &lt;class &apos;numpy.float32&apos;&gt;
-</code></pre><h2 id="2-tf-zeros-initializer"><a href="#2-tf-zeros-initializer" class="headerlink" title="2 tf.zeros_initializer()"></a>2 tf.zeros_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32, initializer=tf.zeros_initializer(dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[0. 0.]
-         [0. 0.]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, initializer=tf.zeros(shape=[2, 2], dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[0. 0.]
-         [0. 0.]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="3-tf-ones-initializer"><a href="#3-tf-ones-initializer" class="headerlink" title="3 tf.ones_initializer()"></a>3 tf.ones_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32, initializer=tf.ones_initializer(dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[1. 1.]
-         [1. 1.]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, initializer=tf.ones(shape=[2, 2], dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[1. 1.]
-         [1. 1.]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="4-tf-truncated-normal-initializer"><a href="#4-tf-truncated-normal-initializer" class="headerlink" title="4 tf.truncated_normal_initializer()"></a>4 tf.truncated_normal_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32, 
-                    initializer=tf.truncated_normal_initializer(mean=0.0, stddev=1.0, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[-0.47436506 -0.16820015]
-         [ 1.5512161  -0.46900874]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, 
-                    initializer=tf.truncated_normal(shape=[2, 2], mean=0.0, stddev=1.0, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[-1.3907589   0.11421945]
-         [ 0.65596086 -0.46631524]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="5-tf-random-normal-initializer"><a href="#5-tf-random-normal-initializer" class="headerlink" title="5 tf.random_normal_initializer()"></a>5 tf.random_normal_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32, 
-                    initializer=tf.random_normal_initializer(mean=0.0, stddev=1.0, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[-1.1431077  -0.4355431 ]
-         [-0.59528947  1.4470074 ]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, 
-                    initializer=tf.random_normal(shape=[2, 2], mean=0.0, stddev=1.0, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[-0.8873615 -1.5804261]
-         [ 0.978012  -2.0380049]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="6-tf-random-uniform-initializer"><a href="#6-tf-random-uniform-initializer" class="headerlink" title="6 tf.random_uniform_initializer()"></a>6 tf.random_uniform_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32, 
-                    initializer=tf.random_uniform_initializer(minval=0, maxval=None, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[0.18737555 0.00549996]
-         [0.1582321  0.05845535]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-
-
-
-a = tf.get_variable(name=&apos;a&apos;, dtype=tf.float32, 
-                    initializer=tf.random_uniform(shape=[2, 2], minval=0, maxval=None, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[0.60605323 0.50872326]
-         [0.9280783  0.45167053]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="7-tf-orthogonal-initializer-正交矩阵"><a href="#7-tf-orthogonal-initializer-正交矩阵" class="headerlink" title="7 tf.orthogonal_initializer()    正交矩阵"></a>7 tf.orthogonal_initializer()    正交矩阵</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32,
-                initializer=tf.orthogonal_initializer(gain=1.0, seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-
-output: [[-0.93122697  0.3644396 ]
-         [-0.3644396  -0.931227  ]]
-        &lt;class &apos;numpy.ndarray&apos;&gt;
-</code></pre><h2 id="8-tf-glorot-uniform-initializer"><a href="#8-tf-glorot-uniform-initializer" class="headerlink" title="8 tf.glorot_uniform_initializer()"></a>8 tf.glorot_uniform_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32,
-                    initializer=tf.glorot_uniform_initializer(seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-</code></pre><h2 id="9-tf-glorot-normal-initializer"><a href="#9-tf-glorot-normal-initializer" class="headerlink" title="9 tf.glorot_normal_initializer()"></a>9 tf.glorot_normal_initializer()</h2><pre><code>a = tf.get_variable(name=&apos;a&apos;, shape=[2, 2], dtype=tf.float32,
-                    initializer=tf.glorot_normal_initializer(seed=None, dtype=tf.float32))
-sess.run(tf.global_variables_initializer())
-print(sess.run(a))
-print(type(sess.run(a)))
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/26/linux/linux_lamp/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1539,233 +1192,6 @@ DocumentRoot &quot;/root/thinkphp/public&quot;
 </code></pre><h2 id="3-4-给-root-目录-777-权限-非常重要"><a href="#3-4-给-root-目录-777-权限-非常重要" class="headerlink" title="3.4 给 /root 目录 777 权限 (非常重要)"></a>3.4 给 /root 目录 777 权限 (非常重要)</h2><pre><code>chmod -R 777 /root
 </code></pre><h2 id="3-5-看日志"><a href="#3-5-看日志" class="headerlink" title="3.5 看日志"></a>3.5 看日志</h2><pre><code>vim /var/log/httpd/error_log
 </code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/deep learning/paper/Bag-of-Tricks/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xuxiaokang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/17/deep learning/paper/Bag-of-Tricks/" itemprop="url">
-                  Bag of Tricks for Image Classification with Convolutional Neural Networks
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-17 08:13:24" itemprop="dateCreated datePublished" datetime="2018-12-17T08:13:24+08:00">2018-12-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 19:56:40" itemprop="dateModified" datetime="2019-04-26T19:56:40+08:00">2019-04-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/deep-learning/" itemprop="url" rel="index"><span itemprop="name">deep learning</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h1><p>ImageNet的 top-1 validation accuracy 从62.5% (AlexNet) 提升到 82.7% (NASNet-A)。  </p>
-<p>准确率的提升不仅仅来自于网络架构的调整，训练过程中的<strong>损失函数、数据预处理和优化方法</strong>也起着重要作用。但这些微调在论文中只是被当作实现细节简要提及或者只能从源码中才能找到。  </p>
-<p>在这篇文章做，我们列举了一系列训练过程和模型架构的改进方法，这些方法都能够提升模型准确率但几乎不增加计算复杂度的。大部分的改进方法都是像<strong>调整卷积操作的步长、调节学习率</strong>这样的[tricks]。  </p>
-<p>我们的实验表明，这些[tricks]都能显著提升准确率，并且把它们结合起来的话，还能进一步提升准确率。在表[1]中我们比较了运用了所有[tricks]的ResNet和其他相关网络模型。这些[tricks]能够把Resnet-50在ImageNet上的 top-1 validation accuracy 从75.3% 提升到 79.29%。它也优于其他更新、经过改善了的网络架构像Se-ResNeXt-50。我们进一步表明：在物体检测和语义分割这样的应用领域中，这些[tricks]可以带来更好的迁移学习性能。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Model</th>
-<th style="text-align:center">FLOPs</th>
-<th style="text-align:center">top-1</th>
-<th style="text-align:center">top-5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">ResNet-50</td>
-<td style="text-align:center">3.9G</td>
-<td style="text-align:center">75.3</td>
-<td style="text-align:center">92.2</td>
-</tr>
-<tr>
-<td style="text-align:left">ResNeXt-50</td>
-<td style="text-align:center">4.2G</td>
-<td style="text-align:center">77.8</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:left">SE-ResNet-50</td>
-<td style="text-align:center">3.9G</td>
-<td style="text-align:center">76.71</td>
-<td style="text-align:center">93.38</td>
-</tr>
-<tr>
-<td style="text-align:left">SE-ResNeXt-50</td>
-<td style="text-align:center">4.3G</td>
-<td style="text-align:center">78.90</td>
-<td style="text-align:center">94.51</td>
-</tr>
-<tr>
-<td style="text-align:left">DenseNet-20</td>
-<td style="text-align:center">4.3G</td>
-<td style="text-align:center">77.42</td>
-<td style="text-align:center">93.66</td>
-</tr>
-<tr>
-<td style="text-align:left">ResNet-50 + tricks</td>
-<td style="text-align:center">4.3G</td>
-<td style="text-align:center">79.29</td>
-<td style="text-align:center">94.63</td>
-</tr>
-</tbody>
-</table>
-<h1 id="2-Training-Procedures"><a href="#2-Training-Procedures" class="headerlink" title="2. Training Procedures"></a>2. Training Procedures</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Algorithm 1  </span><br><span class="line">Train a neural network with mini-batch stochastic gradient descent</span><br><span class="line"></span><br><span class="line">initialize(net)</span><br><span class="line">for epoch = 1, ..., K do</span><br><span class="line">    for batch = 1, ..., #images/b do</span><br><span class="line">        images ← uniformly random sample b images</span><br><span class="line">        X, y ← preprocess(images)</span><br><span class="line">        z ← forward(net, X)</span><br><span class="line">        l ← loss(z, y)</span><br><span class="line">        grad ← backward(l)</span><br><span class="line">        update(net, grad)</span><br><span class="line">    end for</span><br><span class="line">end for</span><br></pre></td></tr></table></figure>
-<p>Algorithm [1]给出了使用mini-batch SGD训练神经网络的模版。每次迭代过程中，我们随机采样b张图片计算梯度然后更新参数。经过K次迭代后停止。算法[1]所有的函数和超参数可以通过许多不同的方法来实现。这一章，我们先具体说明一个实现算法[1]的基准线。</p>
-<h2 id="2-1-Baseline-Training-Procedure"><a href="#2-1-Baseline-Training-Procedure" class="headerlink" title="2.1 Baseline Training Procedure"></a>2.1 Baseline Training Procedure</h2><p>我们把广泛使用的ResNet的实现作为我们的基准线。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">训练过程中的步骤如下: </span><br><span class="line">1.随机采样一张图片，并解码为 32 位的原始像素浮点值，像素值的取值范围为[0, 255]</span><br><span class="line">2.以纵横比为 [3/4, 4/3] (也就是9:16) 的矩形框采样大小在[8%, 100%]的图片，并缩放为224*224的正方形图片</span><br><span class="line">3.以0.5的概率水平翻转</span><br><span class="line">4.在[0.6, 1.4]均匀分布中选取一个系数，用来缩放图片的色彩，饱和度，亮度。</span><br><span class="line">5.添加PCA噪声，系数采样于标准正态分布。</span><br><span class="line">6.通过减去（123.68, 116.779, 103.939），并除以（58.393, 57.12, 57.375）来标准化RGB三通道。</span><br></pre></td></tr></table></figure></p>
-<p>验证过程中，我们保持纵横比不变的前提下，把短的变成定为256像素。然后在中心裁剪出224*224的区域并标准化RGB三通道。We do not perform any random augmentations during validation。  </p>
-<p>卷积层和全连接层都是通过Xavier初始化权重的。我们把权重设置为从[-a, a]均匀地抽取出来的随机值。$a = \sqrt{6 / (d_{in}+d_{out})}$，这里的$d_{in}$和$d_{out}$分别是输入输出的通道数。所有的偏置初始化为0。对于batch normalization操作，$\gamma$设置为0，$\beta$设置为0。  </p>
-<h1 id="3-高效训练"><a href="#3-高效训练" class="headerlink" title="3. 高效训练"></a>3. 高效训练</h1><p>GPUs这类硬件在近几年迅速发展，导致的结果就是改变了我们对许多性能相关的权衡有了更优的结果。举个例子：在训练过程中，使用低精度浮点数和大批量是更有效率的。在本章，我们回顾了大量技术，这些技术都在没有损失模型精确度的前提下采用了低精度和大批量。一些技术甚至既提升了精确度又提升了训练速度。</p>
-<h2 id="3-1-Large-batch-training"><a href="#3-1-Large-batch-training" class="headerlink" title="3.1 Large-batch training"></a>3.1 Large-batch training</h2><h3 id="3-1-1-Linear-scaling-learning-rate"><a href="#3-1-1-Linear-scaling-learning-rate" class="headerlink" title="3.1.1 Linear scaling learning rate"></a>3.1.1 Linear scaling learning rate</h3><h3 id="3-1-2-Learning-rate-warmup"><a href="#3-1-2-Learning-rate-warmup" class="headerlink" title="3.1.2 Learning rate warmup"></a>3.1.2 Learning rate warmup</h3><h3 id="3-1-3-Zero-gamma"><a href="#3-1-3-Zero-gamma" class="headerlink" title="3.1.3 Zero $\gamma$"></a>3.1.3 Zero $\gamma$</h3><h3 id="3-1-4-No-bias-decay"><a href="#3-1-4-No-bias-decay" class="headerlink" title="3.1.4 No bias decay"></a>3.1.4 No bias decay</h3>
           
         
       
@@ -2649,6 +2075,371 @@ p = &amp;stu;
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/mysql/mysql_change_password/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/02/mysql/mysql_change_password/" itemprop="url">
+                  mysql - 更改root密码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-02 11:57:31" itemprop="dateCreated datePublished" datetime="2018-11-02T11:57:31+08:00">2018-11-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-26 19:42:11" itemprop="dateModified" datetime="2019-04-26T19:42:11+08:00">2019-04-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="查找mysql进程，查看mysql安装路径"><a href="#查找mysql进程，查看mysql安装路径" class="headerlink" title="查找mysql进程，查看mysql安装路径"></a>查找mysql进程，查看mysql安装路径</h1><pre><code>ps -ef | grep mysql
+</code></pre><h1 id="进入mysql安装路径-usr-local-Cellar-mysql-8-0-11-bin"><a href="#进入mysql安装路径-usr-local-Cellar-mysql-8-0-11-bin" class="headerlink" title="进入mysql安装路径 /usr/local/Cellar/mysql/8.0.11/bin"></a>进入mysql安装路径 /usr/local/Cellar/mysql/8.0.11/bin</h1><pre><code>cd /usr/local/Cellar/mysql/8.0.11/bin
+</code></pre><h1 id="暂停mysql服务"><a href="#暂停mysql服务" class="headerlink" title="暂停mysql服务"></a>暂停mysql服务</h1><pre><code>./mysql.server stop
+</code></pre><h1 id="安全模式启动mysql"><a href="#安全模式启动mysql" class="headerlink" title="安全模式启动mysql"></a>安全模式启动mysql</h1><pre><code>./mysqld_safe --skip-grant-tables &amp;
+</code></pre><h1 id="进入mysql交互模式"><a href="#进入mysql交互模式" class="headerlink" title="进入mysql交互模式"></a>进入mysql交互模式</h1><pre><code>mysql
+</code></pre><h1 id="选择【mysql】数据库"><a href="#选择【mysql】数据库" class="headerlink" title="选择【mysql】数据库"></a>选择【mysql】数据库</h1><pre><code>use mysql
+</code></pre><h1 id="刷新mysql的系统权限相关表"><a href="#刷新mysql的系统权限相关表" class="headerlink" title="刷新mysql的系统权限相关表"></a>刷新mysql的系统权限相关表</h1><pre><code>flush privileges;
+</code></pre><h1 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h1><pre><code>ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;新密码&apos;;(8版本以前)
+ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;新密码&apos;;(8版本之后)
+</code></pre><h1 id="注意：重启mysql"><a href="#注意：重启mysql" class="headerlink" title="注意：重启mysql"></a>注意：重启mysql</h1><pre><code>./mysql.server stop
+./mysql.server start
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/05/MacBook/MacBook_proxychains-ng/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/05/MacBook/MacBook_proxychains-ng/" itemprop="url">
+                  MacBook - 安装proxychains-ng
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-05 20:59:01" itemprop="dateCreated datePublished" datetime="2018-07-05T20:59:01+08:00">2018-07-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-14 16:42:28" itemprop="dateModified" datetime="2019-02-14T16:42:28+08:00">2019-02-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/MacBook/" itemprop="url" rel="index"><span itemprop="name">MacBook</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安装-proxychains-ng"><a href="#安装-proxychains-ng" class="headerlink" title="安装 proxychains-ng"></a>安装 <a href="https://github.com/rofl0r/proxychains-ng" target="_blank" rel="noopener">proxychains-ng</a></h1><pre><code>brew install proxychains-ng
+</code></pre><h1 id="配置-proxychains-ng"><a href="#配置-proxychains-ng" class="headerlink" title="配置 proxychains-ng"></a>配置 proxychains-ng</h1><pre><code>vim /usr/local/etc/proxychains.conf
+
+在最后一行添加(端口号和ss里的Socks5端口号一致)
+socks5 127.0.0.1 1086
+</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic1.png" alt="avatar"><br><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic2.png" alt="avatar"></p>
+<h1 id="proxychains-ng-测试"><a href="#proxychains-ng-测试" class="headerlink" title="proxychains-ng 测试"></a>proxychains-ng 测试</h1><pre><code>proxychains4 curl ip.cn
+</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic3.png" alt="avatar"></p>
+<h1 id="proxychains-ng-优化"><a href="#proxychains-ng-优化" class="headerlink" title="proxychains-ng 优化"></a>proxychains-ng 优化</h1><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic6.png" alt="avatar"><br>给proxychains4增加一个别名，在 ~/.bash_profile 末尾加入如下行：</p>
+<pre><code>#   ---------------------------------------
+#   proxychain-ng config
+#   ---------------------------------------
+alias pc=&apos;proxychains4&apos;
+</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic4.png" alt="avatar"></p>
+<pre><code>source ~/.bash_profile
+</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic5.png" alt="avatar"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2696,7 +2487,7 @@ p = &amp;stu;
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2719,9 +2510,7 @@ p = &amp;stu;
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2764,11 +2553,7 @@ p = &amp;stu;
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
