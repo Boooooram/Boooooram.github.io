@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1.macOS 下的 mysql 服务命令1.1 启动服务mysql.server start 1.2 停止服务mysql.server stop 1.3 检查服务mysql.server status 1.4 重启服务mysql.server restart 1.5 重载服务mysql.server reload     2. database 的 CURD2.1 增 - C2.1.1 直接创建">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql_foundation">
+<meta property="og:url" content="http://yoursite.com/2020/02/24/mysql/mysql-foundation/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="1.macOS 下的 mysql 服务命令1.1 启动服务mysql.server start 1.2 停止服务mysql.server stop 1.3 检查服务mysql.server status 1.4 重启服务mysql.server restart 1.5 重载服务mysql.server reload     2. database 的 CURD2.1 增 - C2.1.1 直接创建">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-24T07:24:43.855Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql_foundation">
+<meta name="twitter:description" content="1.macOS 下的 mysql 服务命令1.1 启动服务mysql.server start 1.2 停止服务mysql.server stop 1.3 检查服务mysql.server status 1.4 重启服务mysql.server restart 1.5 重载服务mysql.server reload     2. database 的 CURD2.1 增 - C2.1.1 直接创建">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/24/mysql/mysql-foundation/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>mysql_foundation | </title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Boooooram" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title"></span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/24/mysql/mysql-foundation/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql_foundation
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-24 13:07:02 / 修改时间：15:24:43" itemprop="dateCreated datePublished" datetime="2020-02-24T13:07:02+08:00">2020-02-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-macOS-下的-mysql-服务命令"><a href="#1-macOS-下的-mysql-服务命令" class="headerlink" title="1.macOS 下的 mysql 服务命令"></a>1.macOS 下的 mysql 服务命令</h1><h2 id="1-1-启动服务"><a href="#1-1-启动服务" class="headerlink" title="1.1 启动服务"></a>1.1 启动服务</h2><pre><code>mysql.server start
+</code></pre><h2 id="1-2-停止服务"><a href="#1-2-停止服务" class="headerlink" title="1.2 停止服务"></a>1.2 停止服务</h2><pre><code>mysql.server stop
+</code></pre><h2 id="1-3-检查服务"><a href="#1-3-检查服务" class="headerlink" title="1.3 检查服务"></a>1.3 检查服务</h2><pre><code>mysql.server status
+</code></pre><h2 id="1-4-重启服务"><a href="#1-4-重启服务" class="headerlink" title="1.4 重启服务"></a>1.4 重启服务</h2><pre><code>mysql.server restart
+</code></pre><h2 id="1-5-重载服务"><a href="#1-5-重载服务" class="headerlink" title="1.5 重载服务"></a>1.5 重载服务</h2><pre><code>mysql.server reload    
+</code></pre><h1 id="2-database-的-CURD"><a href="#2-database-的-CURD" class="headerlink" title="2. database 的 CURD"></a>2. database 的 CURD</h1><h2 id="2-1-增-C"><a href="#2-1-增-C" class="headerlink" title="2.1 增 - C"></a>2.1 增 - C</h2><h3 id="2-1-1-直接创建"><a href="#2-1-1-直接创建" class="headerlink" title="2.1.1 直接创建"></a>2.1.1 直接创建</h3><pre><code>create database db_name;
+</code></pre><h3 id="2-1-2-使用-utf8-字符集"><a href="#2-1-2-使用-utf8-字符集" class="headerlink" title="2.1.2 使用 utf8 字符集"></a>2.1.2 使用 utf8 字符集</h3><pre><code>create database db_name character set utf8;
+</code></pre><h3 id="2-1-3-对存入数据的编码进行检查"><a href="#2-1-3-对存入数据的编码进行检查" class="headerlink" title="2.1.3 对存入数据的编码进行检查"></a>2.1.3 对存入数据的编码进行检查</h3><pre><code>create database db_name character set utf8 collate utf8_general_ci;
+</code></pre><h2 id="2-2-改-U"><a href="#2-2-改-U" class="headerlink" title="2.2 改 - U"></a>2.2 改 - U</h2><h3 id="2-2-1-无法修改-db-name"><a href="#2-2-1-无法修改-db-name" class="headerlink" title="2.2.1 无法修改 db_name"></a>2.2.1 无法修改 db_name</h3><h3 id="2-2-2-修改数据库字符集-charset"><a href="#2-2-2-修改数据库字符集-charset" class="headerlink" title="2.2.2 修改数据库字符集(charset)"></a>2.2.2 修改数据库字符集(charset)</h3><pre><code>alter database db_name character set new_charset;
+</code></pre><h2 id="2-3-查-R"><a href="#2-3-查-R" class="headerlink" title="2.3 查 - R"></a>2.3 查 - R</h2><h3 id="2-3-1-查看数据库"><a href="#2-3-1-查看数据库" class="headerlink" title="2.3.1 查看数据库"></a>2.3.1 查看数据库</h3><pre><code>show databases;
+</code></pre><h3 id="2-3-2-查看创建数据库的语句信息"><a href="#2-3-2-查看创建数据库的语句信息" class="headerlink" title="2.3.2 查看创建数据库的语句信息"></a>2.3.2 查看创建数据库的语句信息</h3><pre><code>show create database db_name;
+</code></pre><h2 id="2-4-删-D"><a href="#2-4-删-D" class="headerlink" title="2.4 删 - D"></a>2.4 删 - D</h2><h3 id="2-4-1"><a href="#2-4-1" class="headerlink" title="2.4.1"></a>2.4.1</h3><pre><code>drop database db_name;
+</code></pre><h1 id="3-table-的-CURD"><a href="#3-table-的-CURD" class="headerlink" title="3. table 的 CURD"></a>3. table 的 CURD</h1><h2 id="3-1-增-C"><a href="#3-1-增-C" class="headerlink" title="3.1 增 - C"></a>3.1 增 - C</h2><h3 id="3-1-1-创建表-A-table-must-have-at-least-1-column"><a href="#3-1-1-创建表-A-table-must-have-at-least-1-column" class="headerlink" title="3.1.1 创建表(A table must have at least 1 column)"></a>3.1.1 创建表(A table must have at least 1 column)</h3><pre><code>create table table_name（
+    column_name column_type [NOT NULL | NULL] [DEFAULT default_value]
+    [AUTO_INCREMENT] [UNIQUE [KEY]] [[PRIMARY] KEY][COMMENT &apos;string&apos;])
+</code></pre><h2 id="3-2-改-U"><a href="#3-2-改-U" class="headerlink" title="3.2 改 - U"></a>3.2 改 - U</h2><h3 id="3-2-1-修改-table-name"><a href="#3-2-1-修改-table-name" class="headerlink" title="3.2.1 修改 table_name"></a>3.2.1 修改 table_name</h3><pre><code>rename table old_name to new_name;
+</code></pre><h3 id="3-2-2-增加一个字段"><a href="#3-2-2-增加一个字段" class="headerlink" title="3.2.2 增加一个字段"></a>3.2.2 增加一个字段</h3><pre><code>alter table table_name add column column_name column_type;
+</code></pre><h3 id="3-2-3-修改一个字段"><a href="#3-2-3-修改一个字段" class="headerlink" title="3.2.3 修改一个字段"></a>3.2.3 修改一个字段</h3><pre><code>alter table table_name modify column column_name new_column_type;
+</code></pre><h3 id="3-2-4-删除一个字段"><a href="#3-2-4-删除一个字段" class="headerlink" title="3.2.4 删除一个字段"></a>3.2.4 删除一个字段</h3><pre><code>alter table table_name drop column column_name;
+</code></pre><h3 id="3-2-5-修改表的字符集"><a href="#3-2-5-修改表的字符集" class="headerlink" title="3.2.5 修改表的字符集"></a>3.2.5 修改表的字符集</h3><pre><code>alter table table_name character set new_charset;
+</code></pre><h2 id="3-3-查-R"><a href="#3-3-查-R" class="headerlink" title="3.3 查 - R"></a>3.3 查 - R</h2><h3 id="3-3-1-查看表"><a href="#3-3-1-查看表" class="headerlink" title="3.3.1 查看表"></a>3.3.1 查看表</h3><pre><code>show tables;
+</code></pre><h3 id="3-3-2-查看创建表的语句信息"><a href="#3-3-2-查看创建表的语句信息" class="headerlink" title="3.3.2 查看创建表的语句信息"></a>3.3.2 查看创建表的语句信息</h3><pre><code>show create table table_name;
+</code></pre><h3 id="3-3-3-查看表结构"><a href="#3-3-3-查看表结构" class="headerlink" title="3.3.3 查看表结构"></a>3.3.3 查看表结构</h3><pre><code>desc table_name;
+</code></pre><h2 id="3-4-删-D"><a href="#3-4-删-D" class="headerlink" title="3.4 删 - D"></a>3.4 删 - D</h2><h3 id="3-4-1-删除表"><a href="#3-4-1-删除表" class="headerlink" title="3.4.1 删除表"></a>3.4.1 删除表</h3><pre><code>drop table table_name;
+</code></pre><h1 id="4-data-的-CURD"><a href="#4-data-的-CURD" class="headerlink" title="4 data 的 CURD"></a>4 data 的 CURD</h1><h2 id="4-1-增-C"><a href="#4-1-增-C" class="headerlink" title="4.1 增 - C"></a>4.1 增 - C</h2><h3 id="4-1-1-包含所有-column"><a href="#4-1-1-包含所有-column" class="headerlink" title="4.1.1 包含所有 column"></a>4.1.1 包含所有 column</h3><pre><code>insert into table_name values(val1, val2, val3, ... valn);
+</code></pre><h3 id="4-1-2-包含部分-column"><a href="#4-1-2-包含部分-column" class="headerlink" title="4.1.2 包含部分 column"></a>4.1.2 包含部分 column</h3><pre><code>insert into table_name(col1, col2, coln) values(val1, val2, valn);
+</code></pre><h2 id="4-2-改-U"><a href="#4-2-改-U" class="headerlink" title="4.2 改 - U"></a>4.2 改 - U</h2><h3 id="4-2-1-修改某一行的字段"><a href="#4-2-1-修改某一行的字段" class="headerlink" title="4.2.1 修改某一行的字段"></a>4.2.1 修改某一行的字段</h3><pre><code>update table_name set column_name = new_value;
+</code></pre><h2 id="4-3-查-R"><a href="#4-3-查-R" class="headerlink" title="4.3 查 - R"></a>4.3 查 - R</h2><h3 id="4-3-1-表格形式查所有信息"><a href="#4-3-1-表格形式查所有信息" class="headerlink" title="4.3.1 表格形式查所有信息"></a>4.3.1 表格形式查所有信息</h3><pre><code>select * from table_name
+</code></pre><h3 id="4-3-2-分块形式查看所有信息"><a href="#4-3-2-分块形式查看所有信息" class="headerlink" title="4.3.2 分块形式查看所有信息"></a>4.3.2 分块形式查看所有信息</h3><pre><code>select * from table_name \G
+</code></pre><h2 id="4-4-删-D"><a href="#4-4-删-D" class="headerlink" title="4.4 删 - D"></a>4.4 删 - D</h2><h3 id="4-4-1-根据条件删除-record"><a href="#4-4-1-根据条件删除-record" class="headerlink" title="4.4.1 根据条件删除 record"></a>4.4.1 根据条件删除 record</h3><pre><code>delete from table_name where [conditions];
+</code></pre><h3 id="4-4-2-删除全部-record"><a href="#4-4-2-删除全部-record" class="headerlink" title="4.4.2 删除全部 record"></a>4.4.2 删除全部 record</h3><pre><code>delete from table_name;
+or
+truncate table table_name;
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/18/redis/redis/" rel="next" title="《 Redis 实战 》笔记">
+                <i class="fa fa-chevron-left"></i> 《 Redis 实战 》笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xuxiaokang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Boooooram" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/Boooooram_" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-macOS-下的-mysql-服务命令"><span class="nav-text">1.macOS 下的 mysql 服务命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-启动服务"><span class="nav-text">1.1 启动服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-停止服务"><span class="nav-text">1.2 停止服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-检查服务"><span class="nav-text">1.3 检查服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-重启服务"><span class="nav-text">1.4 重启服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-重载服务"><span class="nav-text">1.5 重载服务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-database-的-CURD"><span class="nav-text">2. database 的 CURD</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-增-C"><span class="nav-text">2.1 增 - C</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-直接创建"><span class="nav-text">2.1.1 直接创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-使用-utf8-字符集"><span class="nav-text">2.1.2 使用 utf8 字符集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-对存入数据的编码进行检查"><span class="nav-text">2.1.3 对存入数据的编码进行检查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-改-U"><span class="nav-text">2.2 改 - U</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-无法修改-db-name"><span class="nav-text">2.2.1 无法修改 db_name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-修改数据库字符集-charset"><span class="nav-text">2.2.2 修改数据库字符集(charset)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-查-R"><span class="nav-text">2.3 查 - R</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-查看数据库"><span class="nav-text">2.3.1 查看数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-查看创建数据库的语句信息"><span class="nav-text">2.3.2 查看创建数据库的语句信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-删-D"><span class="nav-text">2.4 删 - D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1"><span class="nav-text">2.4.1</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-table-的-CURD"><span class="nav-text">3. table 的 CURD</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-增-C"><span class="nav-text">3.1 增 - C</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-创建表-A-table-must-have-at-least-1-column"><span class="nav-text">3.1.1 创建表(A table must have at least 1 column)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-改-U"><span class="nav-text">3.2 改 - U</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-修改-table-name"><span class="nav-text">3.2.1 修改 table_name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-增加一个字段"><span class="nav-text">3.2.2 增加一个字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3-修改一个字段"><span class="nav-text">3.2.3 修改一个字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-4-删除一个字段"><span class="nav-text">3.2.4 删除一个字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-5-修改表的字符集"><span class="nav-text">3.2.5 修改表的字符集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-查-R"><span class="nav-text">3.3 查 - R</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-查看表"><span class="nav-text">3.3.1 查看表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-查看创建表的语句信息"><span class="nav-text">3.3.2 查看创建表的语句信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-3-查看表结构"><span class="nav-text">3.3.3 查看表结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-删-D"><span class="nav-text">3.4 删 - D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1-删除表"><span class="nav-text">3.4.1 删除表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-data-的-CURD"><span class="nav-text">4 data 的 CURD</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-增-C"><span class="nav-text">4.1 增 - C</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-1-包含所有-column"><span class="nav-text">4.1.1 包含所有 column</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-2-包含部分-column"><span class="nav-text">4.1.2 包含部分 column</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-改-U"><span class="nav-text">4.2 改 - U</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-修改某一行的字段"><span class="nav-text">4.2.1 修改某一行的字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-查-R"><span class="nav-text">4.3 查 - R</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-表格形式查所有信息"><span class="nav-text">4.3.1 表格形式查所有信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-分块形式查看所有信息"><span class="nav-text">4.3.2 分块形式查看所有信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-删-D"><span class="nav-text">4.4 删 - D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1-根据条件删除-record"><span class="nav-text">4.4.1 根据条件删除 record</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2-删除全部-record"><span class="nav-text">4.4.2 删除全部 record</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuxiaokang</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -291,6 +291,370 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/24/mysql/mysql-foundation/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/24/mysql/mysql-foundation/" itemprop="url">
+                  mysql_foundation
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-24 13:07:02 / 修改时间：15:24:43" itemprop="dateCreated datePublished" datetime="2020-02-24T13:07:02+08:00">2020-02-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-macOS-下的-mysql-服务命令"><a href="#1-macOS-下的-mysql-服务命令" class="headerlink" title="1.macOS 下的 mysql 服务命令"></a>1.macOS 下的 mysql 服务命令</h1><h2 id="1-1-启动服务"><a href="#1-1-启动服务" class="headerlink" title="1.1 启动服务"></a>1.1 启动服务</h2><pre><code>mysql.server start
+</code></pre><h2 id="1-2-停止服务"><a href="#1-2-停止服务" class="headerlink" title="1.2 停止服务"></a>1.2 停止服务</h2><pre><code>mysql.server stop
+</code></pre><h2 id="1-3-检查服务"><a href="#1-3-检查服务" class="headerlink" title="1.3 检查服务"></a>1.3 检查服务</h2><pre><code>mysql.server status
+</code></pre><h2 id="1-4-重启服务"><a href="#1-4-重启服务" class="headerlink" title="1.4 重启服务"></a>1.4 重启服务</h2><pre><code>mysql.server restart
+</code></pre><h2 id="1-5-重载服务"><a href="#1-5-重载服务" class="headerlink" title="1.5 重载服务"></a>1.5 重载服务</h2><pre><code>mysql.server reload    
+</code></pre><h1 id="2-database-的-CURD"><a href="#2-database-的-CURD" class="headerlink" title="2. database 的 CURD"></a>2. database 的 CURD</h1><h2 id="2-1-增-C"><a href="#2-1-增-C" class="headerlink" title="2.1 增 - C"></a>2.1 增 - C</h2><h3 id="2-1-1-直接创建"><a href="#2-1-1-直接创建" class="headerlink" title="2.1.1 直接创建"></a>2.1.1 直接创建</h3><pre><code>create database db_name;
+</code></pre><h3 id="2-1-2-使用-utf8-字符集"><a href="#2-1-2-使用-utf8-字符集" class="headerlink" title="2.1.2 使用 utf8 字符集"></a>2.1.2 使用 utf8 字符集</h3><pre><code>create database db_name character set utf8;
+</code></pre><h3 id="2-1-3-对存入数据的编码进行检查"><a href="#2-1-3-对存入数据的编码进行检查" class="headerlink" title="2.1.3 对存入数据的编码进行检查"></a>2.1.3 对存入数据的编码进行检查</h3><pre><code>create database db_name character set utf8 collate utf8_general_ci;
+</code></pre><h2 id="2-2-改-U"><a href="#2-2-改-U" class="headerlink" title="2.2 改 - U"></a>2.2 改 - U</h2><h3 id="2-2-1-无法修改-db-name"><a href="#2-2-1-无法修改-db-name" class="headerlink" title="2.2.1 无法修改 db_name"></a>2.2.1 无法修改 db_name</h3><h3 id="2-2-2-修改数据库字符集-charset"><a href="#2-2-2-修改数据库字符集-charset" class="headerlink" title="2.2.2 修改数据库字符集(charset)"></a>2.2.2 修改数据库字符集(charset)</h3><pre><code>alter database db_name character set new_charset;
+</code></pre><h2 id="2-3-查-R"><a href="#2-3-查-R" class="headerlink" title="2.3 查 - R"></a>2.3 查 - R</h2><h3 id="2-3-1-查看数据库"><a href="#2-3-1-查看数据库" class="headerlink" title="2.3.1 查看数据库"></a>2.3.1 查看数据库</h3><pre><code>show databases;
+</code></pre><h3 id="2-3-2-查看创建数据库的语句信息"><a href="#2-3-2-查看创建数据库的语句信息" class="headerlink" title="2.3.2 查看创建数据库的语句信息"></a>2.3.2 查看创建数据库的语句信息</h3><pre><code>show create database db_name;
+</code></pre><h2 id="2-4-删-D"><a href="#2-4-删-D" class="headerlink" title="2.4 删 - D"></a>2.4 删 - D</h2><h3 id="2-4-1"><a href="#2-4-1" class="headerlink" title="2.4.1"></a>2.4.1</h3><pre><code>drop database db_name;
+</code></pre><h1 id="3-table-的-CURD"><a href="#3-table-的-CURD" class="headerlink" title="3. table 的 CURD"></a>3. table 的 CURD</h1><h2 id="3-1-增-C"><a href="#3-1-增-C" class="headerlink" title="3.1 增 - C"></a>3.1 增 - C</h2><h3 id="3-1-1-创建表-A-table-must-have-at-least-1-column"><a href="#3-1-1-创建表-A-table-must-have-at-least-1-column" class="headerlink" title="3.1.1 创建表(A table must have at least 1 column)"></a>3.1.1 创建表(A table must have at least 1 column)</h3><pre><code>create table table_name（
+    column_name column_type [NOT NULL | NULL] [DEFAULT default_value]
+    [AUTO_INCREMENT] [UNIQUE [KEY]] [[PRIMARY] KEY][COMMENT &apos;string&apos;])
+</code></pre><h2 id="3-2-改-U"><a href="#3-2-改-U" class="headerlink" title="3.2 改 - U"></a>3.2 改 - U</h2><h3 id="3-2-1-修改-table-name"><a href="#3-2-1-修改-table-name" class="headerlink" title="3.2.1 修改 table_name"></a>3.2.1 修改 table_name</h3><pre><code>rename table old_name to new_name;
+</code></pre><h3 id="3-2-2-增加一个字段"><a href="#3-2-2-增加一个字段" class="headerlink" title="3.2.2 增加一个字段"></a>3.2.2 增加一个字段</h3><pre><code>alter table table_name add column column_name column_type;
+</code></pre><h3 id="3-2-3-修改一个字段"><a href="#3-2-3-修改一个字段" class="headerlink" title="3.2.3 修改一个字段"></a>3.2.3 修改一个字段</h3><pre><code>alter table table_name modify column column_name new_column_type;
+</code></pre><h3 id="3-2-4-删除一个字段"><a href="#3-2-4-删除一个字段" class="headerlink" title="3.2.4 删除一个字段"></a>3.2.4 删除一个字段</h3><pre><code>alter table table_name drop column column_name;
+</code></pre><h3 id="3-2-5-修改表的字符集"><a href="#3-2-5-修改表的字符集" class="headerlink" title="3.2.5 修改表的字符集"></a>3.2.5 修改表的字符集</h3><pre><code>alter table table_name character set new_charset;
+</code></pre><h2 id="3-3-查-R"><a href="#3-3-查-R" class="headerlink" title="3.3 查 - R"></a>3.3 查 - R</h2><h3 id="3-3-1-查看表"><a href="#3-3-1-查看表" class="headerlink" title="3.3.1 查看表"></a>3.3.1 查看表</h3><pre><code>show tables;
+</code></pre><h3 id="3-3-2-查看创建表的语句信息"><a href="#3-3-2-查看创建表的语句信息" class="headerlink" title="3.3.2 查看创建表的语句信息"></a>3.3.2 查看创建表的语句信息</h3><pre><code>show create table table_name;
+</code></pre><h3 id="3-3-3-查看表结构"><a href="#3-3-3-查看表结构" class="headerlink" title="3.3.3 查看表结构"></a>3.3.3 查看表结构</h3><pre><code>desc table_name;
+</code></pre><h2 id="3-4-删-D"><a href="#3-4-删-D" class="headerlink" title="3.4 删 - D"></a>3.4 删 - D</h2><h3 id="3-4-1-删除表"><a href="#3-4-1-删除表" class="headerlink" title="3.4.1 删除表"></a>3.4.1 删除表</h3><pre><code>drop table table_name;
+</code></pre><h1 id="4-data-的-CURD"><a href="#4-data-的-CURD" class="headerlink" title="4 data 的 CURD"></a>4 data 的 CURD</h1><h2 id="4-1-增-C"><a href="#4-1-增-C" class="headerlink" title="4.1 增 - C"></a>4.1 增 - C</h2><h3 id="4-1-1-包含所有-column"><a href="#4-1-1-包含所有-column" class="headerlink" title="4.1.1 包含所有 column"></a>4.1.1 包含所有 column</h3><pre><code>insert into table_name values(val1, val2, val3, ... valn);
+</code></pre><h3 id="4-1-2-包含部分-column"><a href="#4-1-2-包含部分-column" class="headerlink" title="4.1.2 包含部分 column"></a>4.1.2 包含部分 column</h3><pre><code>insert into table_name(col1, col2, coln) values(val1, val2, valn);
+</code></pre><h2 id="4-2-改-U"><a href="#4-2-改-U" class="headerlink" title="4.2 改 - U"></a>4.2 改 - U</h2><h3 id="4-2-1-修改某一行的字段"><a href="#4-2-1-修改某一行的字段" class="headerlink" title="4.2.1 修改某一行的字段"></a>4.2.1 修改某一行的字段</h3><pre><code>update table_name set column_name = new_value;
+</code></pre><h2 id="4-3-查-R"><a href="#4-3-查-R" class="headerlink" title="4.3 查 - R"></a>4.3 查 - R</h2><h3 id="4-3-1-表格形式查所有信息"><a href="#4-3-1-表格形式查所有信息" class="headerlink" title="4.3.1 表格形式查所有信息"></a>4.3.1 表格形式查所有信息</h3><pre><code>select * from table_name
+</code></pre><h3 id="4-3-2-分块形式查看所有信息"><a href="#4-3-2-分块形式查看所有信息" class="headerlink" title="4.3.2 分块形式查看所有信息"></a>4.3.2 分块形式查看所有信息</h3><pre><code>select * from table_name \G
+</code></pre><h2 id="4-4-删-D"><a href="#4-4-删-D" class="headerlink" title="4.4 删 - D"></a>4.4 删 - D</h2><h3 id="4-4-1-根据条件删除-record"><a href="#4-4-1-根据条件删除-record" class="headerlink" title="4.4.1 根据条件删除 record"></a>4.4.1 根据条件删除 record</h3><pre><code>delete from table_name where [conditions];
+</code></pre><h3 id="4-4-2-删除全部-record"><a href="#4-4-2-删除全部-record" class="headerlink" title="4.4.2 删除全部 record"></a>4.4.2 删除全部 record</h3><pre><code>delete from table_name;
+or
+truncate table table_name;
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/18/redis/redis/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/18/redis/redis/" itemprop="url">
+                  《 Redis 实战 》笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-18 23:12:55" itemprop="dateCreated datePublished" datetime="2020-02-18T23:12:55+08:00">2020-02-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-19 21:36:08" itemprop="dateModified" datetime="2020-02-19T21:36:08+08:00">2020-02-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><h2 id="Redis-基本知识"><a href="#Redis-基本知识" class="headerlink" title="Redis 基本知识"></a>Redis 基本知识</h2><pre><code>1. Redis 是一个远程内存数据库、非关系型数据库
+2. 提供 5 种不同类型的数据结构：STRING, LIST, SET, HASH, ZSET
+3. 两种不同形式的持久化方法
+    3.1 point-in-time dump
+    3.2 由一个append-only的文件记录所有修改了数据库的命令，将append-only修改为“从不同步”、“每秒同步一次”或者“每写入一个命令同步一次”。
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/21/leetcode/leetcode/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -337,7 +701,7 @@
                 
               
 
-              <time title="创建时间：2019-12-21 19:34:02 / 修改时间：19:45:55" itemprop="dateCreated datePublished" datetime="2019-12-21T19:34:02+08:00">2019-12-21</time>
+              <time title="创建时间：2019-12-21 19:34:02 / 修改时间：20:54:12" itemprop="dateCreated datePublished" datetime="2019-12-21T19:34:02+08:00">2019-12-21</time>
             
 
             
@@ -411,7 +775,10 @@
     return gcd;
 }
 </code></pre><h1 id="2-小tips"><a href="#2-小tips" class="headerlink" title="2 小tips"></a>2 小tips</h1><h2 id="2-1-取余"><a href="#2-1-取余" class="headerlink" title="2.1 取余"></a>2.1 取余</h2><pre><code>a % b = a - (a / b) * b;
-</code></pre><h2 id="2-2-取上界"><a href="#2-2-取上界" class="headerlink" title="2.2 取上界"></a>2.2 取上界</h2><pre><code>ceil(a/b) = (a + b - 1) / b;
+</code></pre><h2 id="2-2-取上界"><a href="#2-2-取上界" class="headerlink" title="2.2 取上界"></a>2.2 取上界</h2><pre><code>ceil(a / b) = (a + b - 1) / b;
+</code></pre><h1 id="3-位运算"><a href="#3-位运算" class="headerlink" title="3 位运算"></a>3 位运算</h1><h2 id="3-1-判断是否是2的幂"><a href="#3-1-判断是否是2的幂" class="headerlink" title="3.1 判断是否是2的幂"></a>3.1 判断是否是2的幂</h2><h3 id="3-1-1"><a href="#3-1-1" class="headerlink" title="3.1.1"></a>3.1.1</h3><pre><code>// x &amp; -x 求x最右边的1
+x &gt; 0 &amp;&amp; (x &amp; -x) == x
+</code></pre><h3 id="3-1-2"><a href="#3-1-2" class="headerlink" title="3.1.2"></a>3.1.2</h3><pre><code>x &gt; 0 &amp;&amp; !(x &amp; (x - 1))
 </code></pre>
           
         
@@ -2077,371 +2444,6 @@ p = &amp;stu;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/mysql/mysql_change_password/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xuxiaokang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/02/mysql/mysql_change_password/" itemprop="url">
-                  mysql - 更改root密码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-11-02 11:57:31" itemprop="dateCreated datePublished" datetime="2018-11-02T11:57:31+08:00">2018-11-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 19:42:11" itemprop="dateModified" datetime="2019-04-26T19:42:11+08:00">2019-04-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="查找mysql进程，查看mysql安装路径"><a href="#查找mysql进程，查看mysql安装路径" class="headerlink" title="查找mysql进程，查看mysql安装路径"></a>查找mysql进程，查看mysql安装路径</h1><pre><code>ps -ef | grep mysql
-</code></pre><h1 id="进入mysql安装路径-usr-local-Cellar-mysql-8-0-11-bin"><a href="#进入mysql安装路径-usr-local-Cellar-mysql-8-0-11-bin" class="headerlink" title="进入mysql安装路径 /usr/local/Cellar/mysql/8.0.11/bin"></a>进入mysql安装路径 /usr/local/Cellar/mysql/8.0.11/bin</h1><pre><code>cd /usr/local/Cellar/mysql/8.0.11/bin
-</code></pre><h1 id="暂停mysql服务"><a href="#暂停mysql服务" class="headerlink" title="暂停mysql服务"></a>暂停mysql服务</h1><pre><code>./mysql.server stop
-</code></pre><h1 id="安全模式启动mysql"><a href="#安全模式启动mysql" class="headerlink" title="安全模式启动mysql"></a>安全模式启动mysql</h1><pre><code>./mysqld_safe --skip-grant-tables &amp;
-</code></pre><h1 id="进入mysql交互模式"><a href="#进入mysql交互模式" class="headerlink" title="进入mysql交互模式"></a>进入mysql交互模式</h1><pre><code>mysql
-</code></pre><h1 id="选择【mysql】数据库"><a href="#选择【mysql】数据库" class="headerlink" title="选择【mysql】数据库"></a>选择【mysql】数据库</h1><pre><code>use mysql
-</code></pre><h1 id="刷新mysql的系统权限相关表"><a href="#刷新mysql的系统权限相关表" class="headerlink" title="刷新mysql的系统权限相关表"></a>刷新mysql的系统权限相关表</h1><pre><code>flush privileges;
-</code></pre><h1 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h1><pre><code>ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;新密码&apos;;(8版本以前)
-ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;新密码&apos;;(8版本之后)
-</code></pre><h1 id="注意：重启mysql"><a href="#注意：重启mysql" class="headerlink" title="注意：重启mysql"></a>注意：重启mysql</h1><pre><code>./mysql.server stop
-./mysql.server start
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/05/MacBook/MacBook_proxychains-ng/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xuxiaokang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/05/MacBook/MacBook_proxychains-ng/" itemprop="url">
-                  MacBook - 安装proxychains-ng
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-05 20:59:01" itemprop="dateCreated datePublished" datetime="2018-07-05T20:59:01+08:00">2018-07-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-14 16:42:28" itemprop="dateModified" datetime="2019-02-14T16:42:28+08:00">2019-02-14</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/MacBook/" itemprop="url" rel="index"><span itemprop="name">MacBook</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安装-proxychains-ng"><a href="#安装-proxychains-ng" class="headerlink" title="安装 proxychains-ng"></a>安装 <a href="https://github.com/rofl0r/proxychains-ng" target="_blank" rel="noopener">proxychains-ng</a></h1><pre><code>brew install proxychains-ng
-</code></pre><h1 id="配置-proxychains-ng"><a href="#配置-proxychains-ng" class="headerlink" title="配置 proxychains-ng"></a>配置 proxychains-ng</h1><pre><code>vim /usr/local/etc/proxychains.conf
-
-在最后一行添加(端口号和ss里的Socks5端口号一致)
-socks5 127.0.0.1 1086
-</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic1.png" alt="avatar"><br><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic2.png" alt="avatar"></p>
-<h1 id="proxychains-ng-测试"><a href="#proxychains-ng-测试" class="headerlink" title="proxychains-ng 测试"></a>proxychains-ng 测试</h1><pre><code>proxychains4 curl ip.cn
-</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic3.png" alt="avatar"></p>
-<h1 id="proxychains-ng-优化"><a href="#proxychains-ng-优化" class="headerlink" title="proxychains-ng 优化"></a>proxychains-ng 优化</h1><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic6.png" alt="avatar"><br>给proxychains4增加一个别名，在 ~/.bash_profile 末尾加入如下行：</p>
-<pre><code>#   ---------------------------------------
-#   proxychain-ng config
-#   ---------------------------------------
-alias pc=&apos;proxychains4&apos;
-</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic4.png" alt="avatar"></p>
-<pre><code>source ~/.bash_profile
-</code></pre><p><img src="/2018/07/05/MacBook/MacBook_proxychains-ng/pic5.png" alt="avatar"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2489,7 +2491,7 @@ alias pc=&apos;proxychains4&apos;
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2512,7 +2514,9 @@ alias pc=&apos;proxychains4&apos;
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2555,7 +2559,9 @@ alias pc=&apos;proxychains4&apos;
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2609,7 +2615,7 @@ alias pc=&apos;proxychains4&apos;
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

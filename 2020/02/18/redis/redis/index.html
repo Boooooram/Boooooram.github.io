@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="阶乘函数int factorial(int n) {     return n &amp;gt; 1 ? n * factorial(n - 1) : 1; } Fibonacci 数列int fibonacci(int n) {     return n &amp;gt; 2 ? fibonacci(n - 1) + fibonacci(n - 2) : 1; } Ackerman 函数none 全排列temp">
-<meta name="keywords" content="cpp,algorithm">
+  <meta name="description" content="第一章Redis 基本知识1. Redis 是一个远程内存数据库、非关系型数据库 2. 提供 5 种不同类型的数据结构：STRING, LIST, SET, HASH, ZSET 3. 两种不同形式的持久化方法     3.1 point-in-time dump     3.2 由一个append-only的文件记录所有修改了数据库的命令，将append-only修改为“从不同步”、“每秒同步一">
+<meta name="keywords" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cpp - 递归与分治策略">
-<meta property="og:url" content="http://yoursite.com/2018/11/29/cpp/cpp_ recursion_and_divide_and_conquer/index.html">
+<meta property="og:title" content="《 Redis 实战 》笔记">
+<meta property="og:url" content="http://yoursite.com/2020/02/18/redis/redis/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="阶乘函数int factorial(int n) {     return n &amp;gt; 1 ? n * factorial(n - 1) : 1; } Fibonacci 数列int fibonacci(int n) {     return n &amp;gt; 2 ? fibonacci(n - 1) + fibonacci(n - 2) : 1; } Ackerman 函数none 全排列temp">
+<meta property="og:description" content="第一章Redis 基本知识1. Redis 是一个远程内存数据库、非关系型数据库 2. 提供 5 种不同类型的数据结构：STRING, LIST, SET, HASH, ZSET 3. 两种不同形式的持久化方法     3.1 point-in-time dump     3.2 由一个append-only的文件记录所有修改了数据库的命令，将append-only修改为“从不同步”、“每秒同步一">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T08:42:28.673Z">
+<meta property="og:updated_time" content="2020-02-19T13:36:08.676Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cpp - 递归与分治策略">
-<meta name="twitter:description" content="阶乘函数int factorial(int n) {     return n &amp;gt; 1 ? n * factorial(n - 1) : 1; } Fibonacci 数列int fibonacci(int n) {     return n &amp;gt; 2 ? fibonacci(n - 1) + fibonacci(n - 2) : 1; } Ackerman 函数none 全排列temp">
+<meta name="twitter:title" content="《 Redis 实战 》笔记">
+<meta name="twitter:description" content="第一章Redis 基本知识1. Redis 是一个远程内存数据库、非关系型数据库 2. 提供 5 种不同类型的数据结构：STRING, LIST, SET, HASH, ZSET 3. 两种不同形式的持久化方法     3.1 point-in-time dump     3.2 由一个append-only的文件记录所有修改了数据库的命令，将append-only修改为“从不同步”、“每秒同步一">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/29/cpp/cpp_ recursion_and_divide_and_conquer/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/18/redis/redis/">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>cpp - 递归与分治策略 | </title>
+  <title>《 Redis 实战 》笔记 | </title>
   
 
 
@@ -295,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/29/cpp/cpp_ recursion_and_divide_and_conquer/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/18/redis/redis/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xuxiaokang">
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cpp - 递归与分治策略
+          <h1 class="post-title" itemprop="name headline">《 Redis 实战 》笔记
               
             
           </h1>
@@ -337,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2018-11-29 01:34:35" itemprop="dateCreated datePublished" datetime="2018-11-29T01:34:35+08:00">2018-11-29</time>
+              <time title="创建时间：2020-02-18 23:12:55" itemprop="dateCreated datePublished" datetime="2020-02-18T23:12:55+08:00">2020-02-18</time>
             
 
             
@@ -354,7 +354,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-14 16:42:28" itemprop="dateModified" datetime="2019-02-14T16:42:28+08:00">2019-02-14</time>
+                <time title="修改时间：2020-02-19 21:36:08" itemprop="dateModified" datetime="2020-02-19T21:36:08+08:00">2020-02-19</time>
               
             
           </span>
@@ -371,7 +371,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/cpp/" itemprop="url" rel="index"><span itemprop="name">cpp</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
 
                 
                 
@@ -405,35 +405,11 @@
       
 
       
-        <h1 id="阶乘函数"><a href="#阶乘函数" class="headerlink" title="阶乘函数"></a>阶乘函数</h1><pre><code>int factorial(int n) {
-    return n &gt; 1 ? n * factorial(n - 1) : 1;
-}
-</code></pre><h1 id="Fibonacci-数列"><a href="#Fibonacci-数列" class="headerlink" title="Fibonacci 数列"></a>Fibonacci 数列</h1><pre><code>int fibonacci(int n) {
-    return n &gt; 2 ? fibonacci(n - 1) + fibonacci(n - 2) : 1;
-}
-</code></pre><h1 id="Ackerman-函数"><a href="#Ackerman-函数" class="headerlink" title="Ackerman 函数"></a>Ackerman 函数</h1><pre><code>none
-</code></pre><h1 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h1><pre><code>template&lt;typename T&gt;
-void permutation(T list[], int p, int q) {
-    if(p == q) {
-        for(int i = 0; i &lt;= q; i++)
-            cout &lt;&lt; list[i];
-        cout &lt;&lt; endl;
-    }
-    else {
-        for(int i = p; i &lt;= q; i++) {
-            swap(list[i], list[p]);
-            perm(list, p + 1, q);
-            swap(list[i], list[p]);
-        }
-    }
-}
-
-template&lt;typename T&gt;
-inline void swap(T &amp;a, T &amp;b) {
-    T temp = a;
-    a = b;
-    b = temp;
-}
+        <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><h2 id="Redis-基本知识"><a href="#Redis-基本知识" class="headerlink" title="Redis 基本知识"></a>Redis 基本知识</h2><pre><code>1. Redis 是一个远程内存数据库、非关系型数据库
+2. 提供 5 种不同类型的数据结构：STRING, LIST, SET, HASH, ZSET
+3. 两种不同形式的持久化方法
+    3.1 point-in-time dump
+    3.2 由一个append-only的文件记录所有修改了数据库的命令，将append-only修改为“从不同步”、“每秒同步一次”或者“每写入一个命令同步一次”。
 </code></pre>
       
     </div>
@@ -454,9 +430,7 @@ inline void swap(T &amp;a, T &amp;b) {
       
         <div class="post-tags">
           
-            <a href="/tags/cpp/" rel="tag"><i class="fa fa-tag"></i> cpp</a>
-          
-            <a href="/tags/algorithm/" rel="tag"><i class="fa fa-tag"></i> algorithm</a>
+            <a href="/tags/redis/" rel="tag"><i class="fa fa-tag"></i> redis</a>
           
         </div>
       
@@ -469,8 +443,8 @@ inline void swap(T &amp;a, T &amp;b) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/28/cpp/cpp_SeqList/" rel="next" title="cpp - 顺序表 - SeqList">
-                <i class="fa fa-chevron-left"></i> cpp - 顺序表 - SeqList
+              <a href="/2019/12/21/leetcode/leetcode/" rel="next" title="leetcode">
+                <i class="fa fa-chevron-left"></i> leetcode
               </a>
             
           </div>
@@ -479,8 +453,8 @@ inline void swap(T &amp;a, T &amp;b) {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/26/linux/linux_lamp/" rel="prev" title="linux - lamp">
-                linux - lamp <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/24/mysql/mysql-foundation/" rel="prev" title="mysql_foundation">
+                mysql_foundation <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -675,7 +649,7 @@ inline void swap(T &amp;a, T &amp;b) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#阶乘函数"><span class="nav-text">阶乘函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fibonacci-数列"><span class="nav-text">Fibonacci 数列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ackerman-函数"><span class="nav-text">Ackerman 函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全排列"><span class="nav-text">全排列</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章"><span class="nav-text">第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-基本知识"><span class="nav-text">Redis 基本知识</span></a></li></ol></li></ol></div>
             
 
           </div>
