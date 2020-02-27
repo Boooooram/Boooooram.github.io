@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1. #include  和 #include “filename” 的区别#include \ 常用来include系统提供的头文件，编译器会到保存系统标准头文件的目录查找头文件。 #include “filename” 常用来include程序员自己编写的头文件，编译器会先查找当前目录是否有指定名称的头文件，然后到保存系统标准头文件的目录中进行查找。 2. #include 和 #includ">
+<meta name="keywords" content="cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cpp - 知识点整理">
+<meta property="og:url" content="http://yoursite.com/2020/02/26/cpp/cpp_knowledeg/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="1. #include  和 #include “filename” 的区别#include \ 常用来include系统提供的头文件，编译器会到保存系统标准头文件的目录查找头文件。 #include “filename” 常用来include程序员自己编写的头文件，编译器会先查找当前目录是否有指定名称的头文件，然后到保存系统标准头文件的目录中进行查找。 2. #include 和 #includ">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-27T14:33:47.890Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cpp - 知识点整理">
+<meta name="twitter:description" content="1. #include  和 #include “filename” 的区别#include \ 常用来include系统提供的头文件，编译器会到保存系统标准头文件的目录查找头文件。 #include “filename” 常用来include程序员自己编写的头文件，编译器会先查找当前目录是否有指定名称的头文件，然后到保存系统标准头文件的目录中进行查找。 2. #include 和 #includ">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/26/cpp/cpp_knowledeg/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>cpp - 知识点整理 | </title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Boooooram" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title"></span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/cpp/cpp_knowledeg/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xuxiaokang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">cpp - 知识点整理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-26 21:24:37" itemprop="dateCreated datePublished" datetime="2020-02-26T21:24:37+08:00">2020-02-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-27 22:33:47" itemprop="dateModified" datetime="2020-02-27T22:33:47+08:00">2020-02-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/cpp/" itemprop="url" rel="index"><span itemprop="name">cpp</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-include-和-include-“filename”-的区别"><a href="#1-include-和-include-“filename”-的区别" class="headerlink" title="1. #include  和 #include “filename” 的区别"></a>1. #include <filename> 和 #include “filename” 的区别</filename></h1><p>#include \<filename> 常用来include系统提供的头文件，编译器会到保存系统标准头文件的目录查找头文件。</filename></p>
+<p>#include “filename” 常用来include程序员自己编写的头文件，编译器会先查找当前目录是否有指定名称的头文件，然后到保存系统标准头文件的目录中进行查找。</p>
+<h1 id="2-include-和-include-lt-iostrean-h-gt-的区别"><a href="#2-include-和-include-lt-iostrean-h-gt-的区别" class="headerlink" title="2. #include 和 #include&lt;iostrean.h&gt; 的区别"></a>2. #include<iostream> 和 #include&lt;iostrean.h&gt; 的区别</iostream></h1><p>后缀为.h的头文件在C++标准中已经明确提出不再支持了。早些的C语言将标准库的功能定义在全局空间里，将声明放在带.h的头文件中。C++为了与C语言区别开，也为了正确使用命名空间，规定头文件不再包含后缀.h。使用iostrean.h相当于在C中调用库函数，使用的是全局命名空间。</p>
+<h1 id="3-获取单个字符或字符数组或字符串保存的变量的内存单元地址"><a href="#3-获取单个字符或字符数组或字符串保存的变量的内存单元地址" class="headerlink" title="3. 获取单个字符或字符数组或字符串保存的变量的内存单元地址"></a>3. 获取单个字符或字符数组或字符串保存的变量的内存单元地址</h1><pre><code>const char* p = &quot;hello world&quot;;
+cout &lt;&lt; *p &lt;&lt; endl;         // h
+cout &lt;&lt; (void*)p &lt;&lt; endl;   // 0x100001f4c
+</code></pre><h1 id="4-数组指针和指针数组的区别"><a href="#4-数组指针和指针数组的区别" class="headerlink" title="4. 数组指针和指针数组的区别"></a>4. 数组指针和指针数组的区别</h1><pre><code>优先级: () &gt; [] &gt; *
+数组指针: int (*p)[n]; p本质是指针，指向一个整型的一维数组。执行p+1，会跨过n个整型数据的长度。也可以为p赋值。（数组指针：指向一维数组的指针，行指针）
+指针数组: int* p[n]; 本质是数组，数组元素是指针。不可以执行p+1，也不可以为p赋值。
+</code></pre><h1 id="5-字符串与指针"><a href="#5-字符串与指针" class="headerlink" title="5. 字符串与指针"></a>5. 字符串与指针</h1><pre><code>const char* s = &quot;hello world&quot;;
+字符串指针变量本身是一个变量，用于存放字符串的首地址。可以改变s的指向，但不能改变s所指的字符串常量。因为定义指针时，编译器不会给指针所指的对象分配空间，它只分配指针本身的空间，所以&quot;hello world&quot;会被当成常量，并且被放到常量区，不能被修改。
+</code></pre><h1 id="6-函数与指针"><a href="#6-函数与指针" class="headerlink" title="6. 函数与指针"></a>6. 函数与指针</h1><pre><code>函数指针的声明: 返回类型 (*指针变量名)([参数列表])
+函数名代表了函数的首地址
+</code></pre><h1 id="7-引用"><a href="#7-引用" class="headerlink" title="7. 引用"></a>7. 引用</h1><pre><code>编译器不会为引用分配内存。
+string func();
+void func2(string&amp; s);
+func2(func());      // 非法
+func2(&quot;hello&quot;);     // 非法
+func() 和 &quot;hello&quot; 都将产生一个临时对象，在C++中，这些临时对象都是const类型，上面的表达式试图将一个const类型转化为非const类型，所以是非法的。
+</code></pre><h1 id="8-union"><a href="#8-union" class="headerlink" title="8. union"></a>8. union</h1><pre><code>union 共用体类型名 {
+    type1 name1;
+    type2 name2;
+    ...
+} 变量名;
+
+可以用来判断系统是大端存储还是小端存储
+几乎所有的网络协议都是大端的方式来传输数据
+</code></pre><h1 id="9-枚举类型"><a href="#9-枚举类型" class="headerlink" title="9. 枚举类型"></a>9. 枚举类型</h1><pre><code>enum 枚举类型名 { 枚举常量列表 };
+
+enum weekday{ sun, mou, tue, wed, thu, fri, sat };
+weekday a, b, c;
+
+or 
+
+enum weekday{ sun, mou, tue, wed, thu, fri, sat } a, b, c;
+
+or
+
+enum { sun, mou, tue, wed, thu, fri, sat } a, b, c;
+
+枚举值是常量，不能在程序中用赋值语句再对它赋值。
+只能把枚举值赋值给枚举变量
+a = sun;
+or
+强制类型转换
+a = (enum weekday)2;
+
+enum weather{sunny, cloudy, rainy, windy};
+// sunny = 0, cloudy = 1, rainy = 2, windy = 3
+// 默认地，第一个枚举值被赋值为0
+
+enum weather{sunny=2, cloudy, rainy=7, windy};
+// sunny = 2, cloudy = 3, rainy = 7, windy = 8
+
+同一枚举中，枚举值的取值可以相同
+enum weather{sunny=2, cloudy=3, rainy=2, windy=3};
+</code></pre><h1 id="10-宏定义"><a href="#10-宏定义" class="headerlink" title="10. 宏定义"></a>10. 宏定义</h1><h2 id="10-1-常用宏定义"><a href="#10-1-常用宏定义" class="headerlink" title="10.1 常用宏定义"></a>10.1 常用宏定义</h2><pre><code>#define 宏名 字符串
+#define PI 3.1415926
+
+#define 宏名(参数列表) 具体操作   （多加括号）
+#define square(x) ((x)*(x))
+</code></pre><h2 id="10-2-do…while-0-的妙用"><a href="#10-2-do…while-0-的妙用" class="headerlink" title="10.2 do…while(0)的妙用"></a>10.2 do…while(0)的妙用</h2><pre><code>#define Foo(x) do { \
+    statement one; \
+    statement two; \
+} while(0)     // 这里没有分号
+
+对比
+#define Foo(x) {   \
+    statement one; \
+    statement two; \
+}
+
+使用场景
+if (condition)
+    Foo(x);
+else
+    ...;
+
+使用第二种会变成如下情况，导致else被孤立
+if (condition)
+    statement one;
+    statement two;
+else
+    ...;
+</code></pre><h2 id="10-3-extern-“C”"><a href="#10-3-extern-“C”" class="headerlink" title="10.3 extern “C”"></a>10.3 extern “C”</h2><pre><code>ifdef __cplusplus
+    extern &quot;C&quot; {
+#endif
+
+    ...
+
+ifdef __cplusplus
+    }
+#endif
+
+常用于cpp文件 include C语言编写的库时，库文件内部会添加extern &quot;C&quot;，指定编译器以C语言的标准编译
+</code></pre><h1 id="11-构造函数"><a href="#11-构造函数" class="headerlink" title="11. 构造函数"></a>11. 构造函数</h1><pre><code>如果未定义默认构造函数，但有以下行为，系统会自动生成一个默认构造函数,否则不会自动生成默认构造函数。
+    1.定义成员变量的时候，赋值
+    2.父类的构造函数内有操作
+函数前面不同，构成构造函数重载。
+只要是不需要输入参数就能调用的函数就是构造函数。（所以，所有参数都是默认参数的构造函数也是默认构造函数。）
+</code></pre><h1 id="12-静态成员变量和静态成员函数"><a href="#12-静态成员变量和静态成员函数" class="headerlink" title="12. 静态成员变量和静态成员函数"></a>12. 静态成员变量和静态成员函数</h1><pre><code>静态成员函数 无法访问 非静态成员（变量or函数）
+静态成员函数与非静态成员函数的根本区别是: 非静态成员函数有 this 指针，而静态成员函数没有 this 指针
+</code></pre><h1 id="13-类模版"><a href="#13-类模版" class="headerlink" title="13. 类模版"></a>13. 类模版</h1><pre><code>template &lt;typename T&gt;
+class className {
+    T add(T, T) {}
+};
+
+T className&lt;T&gt;::add(T a, T b) {
+    ...
+}
+</code></pre><h1 id="13-继承-与-派生"><a href="#13-继承-与-派生" class="headerlink" title="13. 继承 与 派生"></a>13. 继承 与 派生</h1><pre><code>class 派生类名 : [继承方式 默认为 private] 基类名 {
+    ...
+}
+
+通过继承而来的成员变量的访问类型为 继承方式 和 在基类中的访问权限的 中的最小级别
+public &gt; protected &gt; private
+</code></pre><h2 id="13-1-派生类的构造函数"><a href="#13-1-派生类的构造函数" class="headerlink" title="13.1 派生类的构造函数"></a>13.1 派生类的构造函数</h2><pre><code>1. 基类和子对象成员的初始化必须在成员初始化列表中进行
+2. 派生类构造函数必须对3类成员进行初始化，执行顺序是：基类， 子对象， 派生类
+3. 派生类有多个基类时，各个基类的调用顺序取决于定义派生类时声明的顺序（自左向右）
+4. 如果派生类的基类也是一个派生类时，每个派生类只需负责其直接基类的构造，一次上溯
+5. 派生类有多个子对象时，各个基类的调用顺序取决于定义派生类时声明的顺序（自前至后）
+6. 如果基类的构造函数定义了一个或多个参数时，派生类必须定义构造函数
+7. 如果基类定义了默认构造函数或根本没有一个构造函数，派生类的构造函数中可以省略对基类构造函数的调用
+8. 子对象也是
+</code></pre><h1 id="13-虚函数"><a href="#13-虚函数" class="headerlink" title="13. 虚函数"></a>13. 虚函数</h1><h2 id="13-1-虚函数定义"><a href="#13-1-虚函数定义" class="headerlink" title="13.1 虚函数定义"></a>13.1 虚函数定义</h2><pre><code>virtual function ();
+</code></pre><h2 id="13-2-纯虚函数定义"><a href="#13-2-纯虚函数定义" class="headerlink" title="13.2 纯虚函数定义"></a>13.2 纯虚函数定义</h2><pre><code>virtual function () = 0
+</code></pre><h1 id="14-makefile"><a href="#14-makefile" class="headerlink" title="14 makefile"></a>14 makefile</h1><h2 id="14-1-概述"><a href="#14-1-概述" class="headerlink" title="14.1 概述"></a>14.1 概述</h2><pre><code>Source File经过编译后会生成Object File，再由Object File生成Executable File。编译时，编译器只检测语法，变量和函数的声明。如果函数未被声明，编译器会给出一个警告，但还是会生成Object File。在链接程序时，链接器会在所有Object File寻找函数的实现，如果未找到，就会报Linker Error。
+</code></pre><h2 id="14-2-makefile介绍"><a href="#14-2-makefile介绍" class="headerlink" title="14.2 makefile介绍"></a>14.2 makefile介绍</h2><h3 id="14-2-1-格式"><a href="#14-2-1-格式" class="headerlink" title="14.2.1 格式"></a>14.2.1 格式</h3><pre><code>targets... : prerequisites...
+    command
+    ...
+    ...
+</code></pre><h3 id="14-2-2-make如何工作"><a href="#14-2-2-make如何工作" class="headerlink" title="14.2.2 make如何工作"></a>14.2.2 make如何工作</h3><pre><code>1. 在当前目录下寻找名叫&quot;Makefile&quot;或&quot;makefile&quot;的文件
+2. 如果找到，它会找文件中第一个target，并把这个文件作为最终目标文件
+3. 如果最终目标文件不存在，或所依赖的后面的Object File修改时间新，就会执行后面的定义的命令来生成最终目标文件
+4. 如果最终目标文件依赖的Object File也不存在，make就会去寻找该Object File的依赖文件，如果找到，就根据规则生成Object File
+5. 如果有依赖文件找不到，make就会退出。make只管文件的依赖性
+</code></pre><h3 id="14-2-3-make自动推导"><a href="#14-2-3-make自动推导" class="headerlink" title="14.2.3 make自动推导"></a>14.2.3 make自动推导</h3><pre><code>如果 make 找到一个 whatever.o ，那么 whatever.c 就会是 whatever.o 的依赖文件。并且 cc -c whatever.c 也会被推导出来。
+
+temp.o : temp.c temp.h abc.h
+    cc -c temp.c
+转变成
+temp.o : temp.h abc.h
+</code></pre><h3 id="14-2-4-清空Object-File"><a href="#14-2-4-清空Object-File" class="headerlink" title="14.2.4 清空Object File"></a>14.2.4 清空Object File</h3><pre><code>.PHONY : clean
+clean:
+    -rm xxx $(objectsFile)
+
+.PHONY 表示 clean 是一个“伪目标”。而在 rm 命令前面加了一个小减号的意思就是，也许某些文件出现问题，但不要管，继续做后面的事。
+</code></pre><h3 id="14-2-5-makefile里有声明"><a href="#14-2-5-makefile里有声明" class="headerlink" title="14.2.5 makefile里有声明"></a>14.2.5 makefile里有声明</h3><pre><code>1.显示规则 （就是上面介绍的）
+2.隐晦规则 （省略Object File后面的.c文件）
+3.变量的定义 （如果Object File太多，可以用变量代替）
+4.文件指示
+    1.在一个makefile中引用另一个makefile
+    2.根据某些情况，指定makefile中的有效部分（#if）
+    3.多行的命令
+5.注释（用#进行行注释）
+</code></pre><h3 id="14-2-6-makefile的命名"><a href="#14-2-6-makefile的命名" class="headerlink" title="14.2.6 makefile的命名"></a>14.2.6 makefile的命名</h3><pre><code>默认都支持 Makefile or makefile
+也可以指定名称  
+make -f xxx.abc
+make --file xxx.abc
+</code></pre><h3 id="14-2-7-引入其他makefile"><a href="#14-2-7-引入其他makefile" class="headerlink" title="14.2.7 引入其他makefile"></a>14.2.7 引入其他makefile</h3><pre><code>include foo.make *.mk $(varName)
+其中$(varName) = d.mk e.mk
+</code></pre><h3 id="14-2-8-make的工作方式"><a href="#14-2-8-make的工作方式" class="headerlink" title="14.2.8 make的工作方式"></a>14.2.8 make的工作方式</h3><pre><code>1.读入所有的makefile
+2.读入include的makefile
+3.初始化变量
+4.推导隐晦规则，并分析所有规则
+5.为所有Object File创建依赖关系链
+6.根据依赖关系链，决定哪些target要重新生成
+7.执行生成命令
+</code></pre><h2 id="14-3-书写规则"><a href="#14-3-书写规则" class="headerlink" title="14.3 书写规则"></a>14.3 书写规则</h2><h3 id="14-3-1-在规则中使用通配符"><a href="#14-3-1-在规则中使用通配符" class="headerlink" title="14.3.1 在规则中使用通配符"></a>14.3.1 在规则中使用通配符</h3><p>三个通配符 * ？ ~</p>
+<pre><code>1. ~
+如果是 ~/test ，这就表示当前用户的 $HOME 目录下的 test 目录。而 ~hchen/test 则表示用户 hchen 的宿主目录下的 test 目录。
+</code></pre><hr>
+<pre><code>2. *
+通配符代替了你一系列的文件，如 *.c 表示所有后缀为 c 的文件。
+
+objects = *.o 不是指所有的.o文件,相当于c++的宏定义
+
+如果要让 objects 的值是所有 .o 的文件名的集合，使用下面的语句
+objects := $(wildcard *.o)
+</code></pre><h2 id="14-4-文件搜索"><a href="#14-4-文件搜索" class="headerlink" title="14.4 文件搜索"></a>14.4 文件搜索</h2><pre><code>VPATH = src : ../headers
+如果不指明VPATH，就会在当前目录找，如果指明了，就在在当前目录找不到的情况下，去VPATH指定的目录找，分别是src和 ../headers，这里用:分隔（当前目录优先级最高）
+</code></pre><hr>
+<pre><code>vpath &lt;pattern&gt;（要搜索的文件集） &lt;directories&gt;（要搜索的文件目录）
+例：vpath %.h ../headers
+在“../headers”目录下搜索所有以 .h 结尾的文件。（如果某文件在当前目 录没有找到的话）(% 的意思是匹配零或若干字符)
+</code></pre><h2 id="14-5-伪目标"><a href="#14-5-伪目标" class="headerlink" title="14.5 伪目标"></a>14.5 伪目标</h2><pre><code>显示指明
+.PHONY : clean
+clean:
+ rm *.o temp
+</code></pre><h1 id="15-map"><a href="#15-map" class="headerlink" title="15. map"></a>15. map</h1><pre><code>内部 红黑树
+
+map&lt;T1, T2&gt; m;
+</code></pre><h2 id="15-1-map插入"><a href="#15-1-map插入" class="headerlink" title="15.1 map插入"></a>15.1 map插入</h2><pre><code>pair&lt;map&lt;T1, T2&gt;::iterator, bool&gt; insert_pair;
+insert_pair = m.insert({T11, T22});
+</code></pre><hr>
+<pre><code>auto [it, bool] = m.insert({T11, T22});
+</code></pre><hr>
+<pre><code>insert插入重复数据会失败
+[]数组方式覆盖数据不会失败
+</code></pre><h1 id="gdb-调试"><a href="#gdb-调试" class="headerlink" title="gdb 调试"></a>gdb 调试</h1>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cpp/" rel="tag"><i class="fa fa-tag"></i> cpp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/24/mysql/mysql-foundation/" rel="next" title="mysql_foundation">
+                <i class="fa fa-chevron-left"></i> mysql_foundation
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xuxiaokang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Boooooram" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/Boooooram_" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-include-和-include-“filename”-的区别"><span class="nav-text">1. #include  和 #include “filename” 的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-include-和-include-lt-iostrean-h-gt-的区别"><span class="nav-text">2. #include 和 #include&lt;iostrean.h&gt; 的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-获取单个字符或字符数组或字符串保存的变量的内存单元地址"><span class="nav-text">3. 获取单个字符或字符数组或字符串保存的变量的内存单元地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-数组指针和指针数组的区别"><span class="nav-text">4. 数组指针和指针数组的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-字符串与指针"><span class="nav-text">5. 字符串与指针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-函数与指针"><span class="nav-text">6. 函数与指针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-引用"><span class="nav-text">7. 引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-union"><span class="nav-text">8. union</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-枚举类型"><span class="nav-text">9. 枚举类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-宏定义"><span class="nav-text">10. 宏定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-1-常用宏定义"><span class="nav-text">10.1 常用宏定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-2-do…while-0-的妙用"><span class="nav-text">10.2 do…while(0)的妙用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-3-extern-“C”"><span class="nav-text">10.3 extern “C”</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-构造函数"><span class="nav-text">11. 构造函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-静态成员变量和静态成员函数"><span class="nav-text">12. 静态成员变量和静态成员函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-类模版"><span class="nav-text">13. 类模版</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-继承-与-派生"><span class="nav-text">13. 继承 与 派生</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#13-1-派生类的构造函数"><span class="nav-text">13.1 派生类的构造函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-虚函数"><span class="nav-text">13. 虚函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#13-1-虚函数定义"><span class="nav-text">13.1 虚函数定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-2-纯虚函数定义"><span class="nav-text">13.2 纯虚函数定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14-makefile"><span class="nav-text">14 makefile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#14-1-概述"><span class="nav-text">14.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-2-makefile介绍"><span class="nav-text">14.2 makefile介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-1-格式"><span class="nav-text">14.2.1 格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-2-make如何工作"><span class="nav-text">14.2.2 make如何工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-3-make自动推导"><span class="nav-text">14.2.3 make自动推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-4-清空Object-File"><span class="nav-text">14.2.4 清空Object File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-5-makefile里有声明"><span class="nav-text">14.2.5 makefile里有声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-6-makefile的命名"><span class="nav-text">14.2.6 makefile的命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-7-引入其他makefile"><span class="nav-text">14.2.7 引入其他makefile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-8-make的工作方式"><span class="nav-text">14.2.8 make的工作方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-3-书写规则"><span class="nav-text">14.3 书写规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-3-1-在规则中使用通配符"><span class="nav-text">14.3.1 在规则中使用通配符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-4-文件搜索"><span class="nav-text">14.4 文件搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-5-伪目标"><span class="nav-text">14.5 伪目标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15-map"><span class="nav-text">15. map</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#15-1-map插入"><span class="nav-text">15.1 map插入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gdb-调试"><span class="nav-text">gdb 调试</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuxiaokang</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
