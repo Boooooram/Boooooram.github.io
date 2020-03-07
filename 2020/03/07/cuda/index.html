@@ -109,7 +109,7 @@
 <meta property="og:site_name">
 <meta property="og:description" content="0. 一些信息链接0.1 最新显卡驱动版本0.2 CUDA版本 - 显卡驱动版本0.3 cuDNN版本 - CUDA版本0.4 查看自己的GPU是否在CUDA的支持列表中0.5 cuDNN首页1. 安装显卡驱动1.1 一些命令sudo apt update sudo apt install -y vim 1.2 禁用nouveau1.2.1 将nouveau加入黑名单sudo vim /etc/m">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-07T06:37:34.995Z">
+<meta property="og:updated_time" content="2020-03-07T06:39:12.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cuda">
 <meta name="twitter:description" content="0. 一些信息链接0.1 最新显卡驱动版本0.2 CUDA版本 - 显卡驱动版本0.3 cuDNN版本 - CUDA版本0.4 查看自己的GPU是否在CUDA的支持列表中0.5 cuDNN首页1. 安装显卡驱动1.1 一些命令sudo apt update sudo apt install -y vim 1.2 禁用nouveau1.2.1 将nouveau加入黑名单sudo vim /etc/m">
@@ -336,7 +336,7 @@
                 
               
 
-              <time title="创建时间：2020-03-07 13:38:01 / 修改时间：14:37:34" itemprop="dateCreated datePublished" datetime="2020-03-07T13:38:01+08:00">2020-03-07</time>
+              <time title="创建时间：2020-03-07 13:38:01 / 修改时间：14:39:12" itemprop="dateCreated datePublished" datetime="2020-03-07T13:38:01+08:00">2020-03-07</time>
             
 
             
@@ -421,11 +421,11 @@ sudo ./cuda_8.0.61_375.26_linux.run --no-opengl-libs
 <li>–no-opengl-libs：表示只安装驱动文件，不安装OpenGL文件。必需参数，原因同上。注意：不是-no-opengl-files。</li>
 <li>–uninstall (deprecated)：用于卸载CUDA Driver（已废弃）。</li>
 <li>–toolkit：表示只安装CUDA Toolkit，不安装Driver和Samples。</li>
-<li>–help：查看更多高级选项。<blockquote>
+<li>–help：查看更多高级选项。</li>
+</ul>
+<blockquote>
 <p>Not enough space on parition mounted at /tmp.Need 5091561472 bytes.Disk space check has failed. Installation cannot continue.</p>
 </blockquote>
-</li>
-</ul>
 <blockquote>
 <p>即错误提示为/tmp空间不足，可执行下面的操作：</p>
 </blockquote>
@@ -447,9 +447,11 @@ sudo make
 chmod +x ./cuda_8.0.61.2_linux.run
 sudo ./cuda_8.0.61.2_linux.run
 </code></pre><ul>
-<li>最后安装补丁CUDA官方补丁<h2 id="2-7-常见错误"><a href="#2-7-常见错误" class="headerlink" title="2.7 常见错误"></a>2.7 常见错误</h2><h3 id="2-7-1-ERROR：Modprobeerror-cloud-not-insert-‘nvidia’-Required-key-not-availble"><a href="#2-7-1-ERROR：Modprobeerror-cloud-not-insert-‘nvidia’-Required-key-not-availble" class="headerlink" title="2.7.1 ERROR：Modprobeerror cloud not insert ‘nvidia’ Required key not availble"></a>2.7.1 ERROR：Modprobeerror cloud not insert ‘nvidia’ Required key not availble</h3>  把bios中的 security boot 给 disable 掉<h3 id="2-7-2-unable-to-locate-the-kernel-source"><a href="#2-7-2-unable-to-locate-the-kernel-source" class="headerlink" title="2.7.2 unable to locate the kernel source"></a>2.7.2 unable to locate the kernel source</h3>  要么卸载显卡驱动，装低版本的驱动 or 卸载显卡驱动，装cuda自带的显卡驱动</li>
+<li>最后安装补丁CUDA官方补丁</li>
 </ul>
-<h1 id="3-安装cuDNN"><a href="#3-安装cuDNN" class="headerlink" title="3. 安装cuDNN"></a>3. 安装cuDNN</h1><p>下载好cudnn文件后执行以下几步：  </p>
+<h2 id="2-7-常见错误"><a href="#2-7-常见错误" class="headerlink" title="2.7 常见错误"></a>2.7 常见错误</h2><h3 id="2-7-1-ERROR：Modprobeerror-cloud-not-insert-‘nvidia’-Required-key-not-availble"><a href="#2-7-1-ERROR：Modprobeerror-cloud-not-insert-‘nvidia’-Required-key-not-availble" class="headerlink" title="2.7.1 ERROR：Modprobeerror cloud not insert ‘nvidia’ Required key not availble"></a>2.7.1 ERROR：Modprobeerror cloud not insert ‘nvidia’ Required key not availble</h3><pre><code>把bios中的 security boot 给 disable 掉
+</code></pre><h3 id="2-7-2-unable-to-locate-the-kernel-source"><a href="#2-7-2-unable-to-locate-the-kernel-source" class="headerlink" title="2.7.2 unable to locate the kernel source"></a>2.7.2 unable to locate the kernel source</h3><pre><code>要么卸载显卡驱动，装低版本的驱动 or 卸载显卡驱动，装cuda自带的显卡驱动
+</code></pre><h1 id="3-安装cuDNN"><a href="#3-安装cuDNN" class="headerlink" title="3. 安装cuDNN"></a>3. 安装cuDNN</h1><p>下载好cudnn文件后执行以下几步：  </p>
 <pre><code>tar -xzvf cudnn-8.0-linux-x64-v6.0.tgz
 sudo cp -a cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp -a cuda/lib64/libcudnn* /usr/local/cuda/lib64
