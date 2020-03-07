@@ -110,7 +110,7 @@
 <meta property="og:site_name">
 <meta property="og:description" content="1.下载源码（链接） 找到想要的版本，要么用wget下载，要么下载到本地后上传到服务器  wget http://ftp.gnu.org/gnu/gcc/gcc-9.1.0/gcc-9.1.0.tar.gz 2.解压 解压到你希望的目录，我解压到了当前目录  tar -zxvf gcc-9.1.0.tar.gz 3.安装依赖cd gcc-9.1.0 ./contrib/download_prere">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-12T06:42:18.811Z">
+<meta property="og:updated_time" content="2020-03-06T14:26:51.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux - update gcc">
 <meta name="twitter:description" content="1.下载源码（链接） 找到想要的版本，要么用wget下载，要么下载到本地后上传到服务器  wget http://ftp.gnu.org/gnu/gcc/gcc-9.1.0/gcc-9.1.0.tar.gz 2.解压 解压到你希望的目录，我解压到了当前目录  tar -zxvf gcc-9.1.0.tar.gz 3.安装依赖cd gcc-9.1.0 ./contrib/download_prere">
@@ -354,7 +354,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-12 14:42:18" itemprop="dateModified" datetime="2019-08-12T14:42:18+08:00">2019-08-12</time>
+                <time title="修改时间：2020-03-06 22:26:51" itemprop="dateModified" datetime="2020-03-06T22:26:51+08:00">2020-03-06</time>
               
             
           </span>
@@ -420,6 +420,9 @@ cd gcc-9.1.0-build
 ../configure --disable-multilib
 </code></pre><blockquote>
 <p>不加『 –disable-multilib 』会出现以下错误信息：<br>configure: error: I suspect your system does not have 32-bit development libraries (libc and headers). If you have them, rerun configure with –enable-multilib. If you do not have them, and want to build a 64-bit-only compiler, rerun configure with –disable-multilib.</p>
+</blockquote>
+<blockquote>
+<p>如果出现：configure: error: Building GCC requires GMP 4.2+, MPFR 2.4.0+ and MPC 0.8.0+.<br>gmp: <a href="http://ftp.gnu.org/pub/gnu/gmp/" target="_blank" rel="noopener">http://ftp.gnu.org/pub/gnu/gmp/</a><br>mpfr: <a href="https://www.mpfr.org" target="_blank" rel="noopener">https://www.mpfr.org</a><br>mpc: <a href="http://ftp.gnu.org/pub/gnu/mpc/" target="_blank" rel="noopener">http://ftp.gnu.org/pub/gnu/mpc/</a><br>安装过程: <a href="https://blog.csdn.net/yandaqijian/article/details/43966217" target="_blank" rel="noopener">https://blog.csdn.net/yandaqijian/article/details/43966217</a></p>
 </blockquote>
 <h1 id="5-编译-amp-安装"><a href="#5-编译-amp-安装" class="headerlink" title="5.编译 &amp; 安装"></a>5.编译 &amp; 安装</h1><blockquote>
 <p>单核cpu编译太久了，挂在后台干其他事情去了，cpu核数多的话，用 -j 选项</p>
@@ -609,7 +612,7 @@ rm -rf libstdc++.so.6
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
